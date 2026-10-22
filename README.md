@@ -108,7 +108,7 @@ The shelf displays larger artwork with bundled brand logos for PS5, PS4, Xbox, N
 
 | Setting | What It Does |
 |---|---|
-| **Shelf apps** | Lists the apps found on your TV so you can pick up to 8 for the glass dock. On a non-rooted Developer Mode TV the public bus answers `Denied method call ... for category "/"` for `listLaunchPoints`; in that case the app falls back to a built-in catalog. Installing the Homebrew Channel unlocks the real inventory. |
+| **Shelf apps** | Lists the apps found on your TV so you can pick up to 8 for the glass dock. On a non-rooted Developer Mode TV the public bus answers `Denied method call ... for category "/"` for `listLaunchPoints`, so the app falls back to a built-in catalog. The Homebrew Channel does **not** lift that by itself: its `exec` also runs as `prisoner` (tested on webOS 4.x), with the same restricted view of the filesystem. The route that does work is the TV's own remote-control API on `ws://127.0.0.1:3000`, which the official Free My TV uses. |
 | **City Name** | Type any city (e.g., `São Paulo`, `Lisbon`, `New York`) for live Open-Meteo weather and accurate local sunset times, or leave blank for automatic IP geolocation. |
 | **Theme Mode** | Choose `Auto (Follows Sunset)`, `Deep Midnight`, `Pure OLED Black`, or `Daylight Blue`. |
 | **TMDB API Key** | Paste a free [TMDB API Key](https://www.themoviedb.org/settings/api) for live weekly trending movies & shows, or leave empty to use the built-in zero-key live popular feed. |
@@ -273,7 +273,7 @@ Abra o painel **Clima e sol** (o widget de clima no header), aperte **→** e es
 
 | Configuração | O Que Faz |
 |---|---|
-| **Apps da prateleira** | Lista os apps encontrados na sua TV para você escolher até 8 para a prateleira. Em TV em Developer Mode sem root o barramento público responde `Denied method call ... for category "/"` para `listLaunchPoints`; nesse caso o app usa o catálogo de reserva. Com o Homebrew Channel instalado a lista real é liberada. |
+| **Apps da prateleira** | Lista os apps encontrados na sua TV para você escolher até 8 para a prateleira. Em TV em Developer Mode sem root o barramento público responde `Denied method call ... for category "/"` para `listLaunchPoints`, e o app usa o catálogo de reserva. O Homebrew Channel **não** resolve isso sozinho: o `exec` dele também roda como `prisoner` (testado no webOS 4.x), com a mesma visão restrita do sistema de arquivos. O caminho que funciona é a API de controle remoto da TV em `ws://127.0.0.1:3000`, que é o que o Free My TV oficial usa. |
 | **Nome da Cidade** | Digite qualquer cidade (ex.: `São Paulo`, `Lisboa`, `Nova York`) para clima ao vivo via Open-Meteo e horários precisos de pôr do sol, ou deixe em branco para geolocalização automática por IP. |
 | **Modo de Tema** | Escolha entre `Automático (Segue o Pôr do Sol)`, `Meia-Noite Profunda`, `Preto OLED Puro`, ou `Azul Diurno`. |
 | **Chave da API do TMDB** | Cole uma [chave gratuita da API do TMDB](https://www.themoviedb.org/settings/api) para ver filmes e séries em alta da semana ao vivo, ou deixe em branco para usar o feed ao vivo popular embutido (sem necessidade de chave). |
