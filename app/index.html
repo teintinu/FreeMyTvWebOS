@@ -502,6 +502,18 @@
             text-overflow: ellipsis;
         }
 
+        /* English original under the localized title, for reference */
+        .pick-original {
+            font-size: 11px;
+            font-style: italic;
+            letter-spacing: -0.1px;
+            color: var(--text-secondary);
+            opacity: 0.72;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
         .pick-service {
             font-size: 12px;
             color: var(--text-secondary);
@@ -1380,19 +1392,43 @@
             if (state.tmdbKey && state.tmdbKey.trim().length > 8) {
                 var key = state.tmdbKey.trim();
                 var headers = key.length > 40 ? { 'Authorization': 'Bearer ' + key } : {};
-                var url = key.length > 40
-                    ? 'https://api.themoviedb.org/3/trending/' + tmdbMediaPath + '/week?language=en-US'
-                    : 'https://api.themoviedb.org/3/trending/' + tmdbMediaPath + '/week?api_key=' + encodeURIComponent(key);
+                var chartUrl = 'https://api.themoviedb.org/3/trending/' + tmdbMediaPath + '/week';
+                var localizedUrl = chartUrl + '?language=pt-BR' +
+                    (key.length > 40 ? '' : '&api_key=' + encodeURIComponent(key));
+                // TMDB localises titles per language, so the pt-BR payload only carries the
+                // original-language title. A second pass over the same weekly chart gives the
+                // exact English name per id, shown under the pt-BR title as a reference.
+                var englishUrl = chartUrl + '?language=en-US' +
+                    (key.length > 40 ? '' : '&api_key=' + encodeURIComponent(key));
 
-                tmdbPromise = fetch(url, { headers: headers })
+                tmdbPromise = fetch(localizedUrl, { headers: headers })
                     .then(function(res) { return res.json(); })
                     .then(function(data) {
+                        return fetch(englishUrl, { headers: headers })
+                            .then(function(res) { return res.json(); })
+                            .then(function(english) {
+                                var englishById = {};
+                                (english && english.results ? english.results : []).forEach(function(entry) {
+                                    englishById[entry.id] = entry.title || entry.name || '';
+                                });
+                                return { data: data, englishById: englishById };
+                            })
+                            .catch(function() { return { data: data, englishById: {} }; });
+                    })
+                    .then(function(payload) {
+                        var data = payload.data;
+                        var englishById = payload.englishById;
                         if (data.results && data.results.length >= 4 && tab === state.picksTab) {
                             var items = data.results.slice(0, 4).map(function(item) {
                                 var title = item.title || item.name || 'Trending';
+                                var english = englishById[item.id] || item.original_title || item.original_name || '';
+                                // Only worth a second line when the English name actually differs —
+                                // some charts return the same title in caps, which would just duplicate.
+                                var sameTitle = english.toLowerCase().trim() === title.toLowerCase().trim();
                                 var score = item.vote_average ? item.vote_average.toFixed(1) + '★' : 'Hot';
                                 return {
                                     title: title,
+                                    titleOriginal: sameTitle ? '' : english,
                                     badge: (tab === 'shows' ? 'Series' : 'Movie') + ' • ' + score,
                                     service: 'TMDB Trending',
                                     app: 'netflix',
@@ -1656,6 +1692,7 @@
                 meta.innerHTML =
                     '<div class="pick-badge">' + pick.badge + '</div>' +
                     '<div class="pick-title">' + pick.title + '</div>' +
+                    (pick.titleOriginal ? '<div class="pick-original">' + pick.titleOriginal + '</div>' : '') +
                     '<div class="pick-service">' + pick.service + '</div>';
 
                 card.appendChild(poster);

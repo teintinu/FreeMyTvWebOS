@@ -8,6 +8,9 @@ import os
 import sys
 import json
 import socket
+import shlex
+import time
+import uuid
 import urllib.request
 import subprocess
 import shutil
@@ -108,43 +111,57 @@ def install_app(tv_ip, passphrase=None):
         print("[!] SCP upload failed.")
         return False
 
-    # luna-send-pub silently prints nothing at all without a controlling TTY
-    # (ssh -tt), and dev/install streams ~15-20 progress replies before the
-    # final "installed" status, so a generous -n bound is needed. It's also
-    # capped with `timeout` because luna-send-pub keeps the SSH session open
-    # waiting for more replies even once the service stops sending any.
-    def run_luna(remote_cmd, force_pty=True):
-        tty_flags = ["-tt"] if force_pty else []
-        args = ["ssh", *tty_flags, *ssh_opts, "-p", "9922", "-i", dec_key, f"prisoner@{tv_ip}", remote_cmd]
-        res = subprocess.run(args, capture_output=True, text=True)
-        # Some TVs' sshd rejects forced PTY allocation outright ("PTY
-        # allocation request failed on channel 0"); ssh then continues the
-        # session without one, which starves luna-send-pub of output. Retry
-        # once without forcing a PTY so the command itself still goes through.
-        if force_pty and "PTY allocation request failed" in (res.stderr or ""):
-            print("[*] TV rejected forced PTY allocation; retrying without one...")
-            res = subprocess.run(["ssh", *ssh_opts, "-p", "9922", "-i", dec_key, f"prisoner@{tv_ip}", remote_cmd], capture_output=True, text=True)
-        return res
+    target = f"prisoner@{tv_ip}"
+
+    # Two firmware quirks make the obvious `ssh ... luna-send-pub ...` approach
+    # unreliable. First, this sshd rejects forced PTY allocation, and without a
+    # TTY luna-send-pub loses its replies when the channel closes as soon as
+    # the client exits. Second, dev/install streams ~15-20 progress events
+    # before the final "installed" status, so the answer arrives long after the
+    # first byte. Running the call detached on the TV with its output sent to a
+    # file, then polling that file over fresh SSH sessions, sidesteps both and
+    # removes the need for `timeout` — the busybox build on webOS only accepts
+    # `timeout -t SECS`, which is what broke earlier attempts.
+    def run_luna(remote_cmd, success_marker, failure_markers=('"state":"failed"', '"errorText"'), timeout=120):
+        log_path = "/tmp/freemytv-" + uuid.uuid4().hex[:8] + ".log"
+        start = "nohup sh -c %s >/dev/null 2>&1 & echo started" % shlex.quote(
+            "%s > %s 2>&1" % (remote_cmd, log_path))
+        subprocess.run(["ssh", *ssh_opts, "-p", "9922", "-i", dec_key, target, start],
+                       capture_output=True, text=True)
+        output = ""
+        ok = False
+        deadline = time.time() + timeout
+        while time.time() < deadline:
+            time.sleep(2)
+            res = subprocess.run(["ssh", *ssh_opts, "-p", "9922", "-i", dec_key, target,
+                                  "cat %s 2>/dev/null" % log_path],
+                                 capture_output=True, text=True)
+            output = res.stdout or output
+            if success_marker in output:
+                ok = True
+                break
+            if any(marker in output for marker in failure_markers):
+                break
+        subprocess.run(["ssh", *ssh_opts, "-p", "9922", "-i", dec_key, target,
+                        "rm -f %s" % log_path], capture_output=True, text=True)
+        return ok, output
 
     print("[*] Installing package on TV...")
     install_payload = json.dumps({"id": APP_ID, "ipkUrl": "/media/developer/temp/app.ipk", "subscribe": True})
-    install_remote_cmd = f"timeout 45 luna-send-pub -n 30 luna://com.webos.appInstallService/dev/install '{install_payload}'"
-    install_res = run_luna(install_remote_cmd)
-    install_out = install_res.stdout
-    if '"state":"installed"' not in install_out:
+    install_remote_cmd = f"luna-send-pub -n 30 luna://com.webos.appInstallService/dev/install '{install_payload}'"
+    installed, install_out = run_luna(install_remote_cmd, '"state":"installed"')
+    if not installed:
         print("[!] Install did not reach the 'installed' state. Raw output:")
         print(install_out or "(empty)")
-        if install_res.stderr:
-            print(install_res.stderr)
         return False
 
     print("[*] Launching Free My TV...")
     launch_payload = json.dumps({"id": APP_ID})
     launch_remote_cmd = f"luna-send-pub -n 1 luna://com.webos.applicationManager/launch '{launch_payload}'"
-    launch_res = run_luna(launch_remote_cmd)
-    if '"returnValue":true' not in launch_res.stdout:
+    launched, launch_out = run_luna(launch_remote_cmd, '"returnValue":true')
+    if not launched:
         print("[!] Install succeeded but launch failed. Raw output:")
-        print(launch_res.stdout or "(empty)")
+        print(launch_out or "(empty)")
         return False
 
     print("\n[+] SUCCESS! Free My TV is installed and running on your LG TV! Enjoy! 🎉")

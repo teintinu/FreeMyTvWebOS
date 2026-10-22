@@ -150,6 +150,16 @@ free-my-webos/
 
 ---
 
+## ✍️ Commit Convention (this fork)
+
+This fork tracks upstream and preserves its history untouched, layering its own fixes on top. Every commit authored by **teintinu** follows one rule:
+
+- **The subject line starts with `teintinu: `** — e.g. `teintinu: corrige instalador no webOS 4.x`.
+- **The message is written in Portuguese (pt-BR)**, including the commit body.
+- Commits coming from upstream keep their original messages and are never rewritten.
+
+---
+
 ## 🤝 Credits & License
 
 - Inspired by [simbasjungles/free-my-tv](https://github.com/simbasjungles/free-my-tv) (for Google TV).
@@ -302,6 +312,16 @@ free-my-webos/
 
 - **Zero Dependência de Frameworks:** Escrito em HTML5, CSS3 e JavaScript puro acelerado por hardware. O pacote `.ipk` inteiro tem menos de **80 KB**.
 - **IPC Direto pelo Barramento Luna:** Chama `luna://com.webos.applicationManager/launch` diretamente do motor web local da TV (com fallback automático para `luna://org.webosbrew.hbchannel.service/exec`).
+
+---
+
+## ✍️ Convenção de Commits (este fork)
+
+Este fork acompanha o upstream e preserva o histórico original intacto, adicionando suas próprias correções por cima. Todo commit de autoria do **teintinu** segue uma regra:
+
+- **O assunto do commit começa com `teintinu: `** — por exemplo, `teintinu: corrige instalador no webOS 4.x`.
+- **A mensagem é escrita em português (pt-BR)**, incluindo o corpo do commit.
+- Commits vindos do upstream mantêm a mensagem original e nunca são reescritos.
 
 ---
 
