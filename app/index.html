@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free My TV</title>
+    <title>TEINTINU TV</title>
     <script src="webOSTV.js"></script>
     <style>
         :root {
@@ -95,37 +95,38 @@
         }
 
         .brand-logo {
-            width: 34px;
-            height: 34px;
-            border-radius: 10px;
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
             background: linear-gradient(135deg, #0a84ff, #0050c8);
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 15px rgba(10, 132, 255, 0.4);
+            box-shadow: 0 6px 20px rgba(10, 132, 255, 0.45);
         }
 
         .brand-logo svg {
-            width: 19px;
-            height: 19px;
+            width: 23px;
+            height: 23px;
             fill: #ffffff;
         }
 
         .brand-title {
-            font-size: 24px;
+            font-size: 33px;
             font-weight: 700;
-            letter-spacing: -0.6px;
+            letter-spacing: -1px;
+            white-space: nowrap;
         }
 
         .tag-pill {
-            font-size: 11px;
+            font-size: 12px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
             background: rgba(48, 209, 88, 0.15);
             color: #30d158;
             border: 1px solid rgba(48, 209, 88, 0.3);
-            padding: 4px 10px;
+            padding: 5px 12px;
             border-radius: 12px;
         }
 
@@ -139,13 +140,13 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            font-size: 14px;
+            font-size: 16px;
             font-weight: 600;
             color: var(--text-primary);
             background: rgba(255, 255, 255, 0.07);
             backdrop-filter: blur(14px);
-            padding: 8px 16px;
-            border-radius: 16px;
+            padding: 10px 18px;
+            border-radius: 18px;
             border: 1.5px solid var(--glass-border);
             cursor: pointer;
             outline: none;
@@ -166,12 +167,12 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            font-size: 15px;
+            font-size: 17px;
             color: var(--text-primary);
             background: rgba(255, 255, 255, 0.07);
             backdrop-filter: blur(14px);
-            padding: 7px 16px;
-            border-radius: 16px;
+            padding: 9px 18px;
+            border-radius: 18px;
             border: 1.5px solid var(--glass-border);
             cursor: pointer;
             will-change: transform;
@@ -186,7 +187,7 @@
         }
 
         .weather-sub {
-            font-size: 12px;
+            font-size: 13px;
             color: var(--text-secondary);
         }
 
@@ -197,14 +198,14 @@
         }
 
         .clock {
-            font-size: 30px;
+            font-size: 40px;
             font-weight: 300;
-            letter-spacing: -0.5px;
+            letter-spacing: -1px;
             color: #ffffff;
         }
 
         .date {
-            font-size: 15px;
+            font-size: 17px;
             font-weight: 400;
             color: var(--text-secondary);
         }
@@ -219,28 +220,28 @@
         }
 
         .hero-tag {
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 2.4px;
             color: var(--accent);
-            margin-bottom: 6px;
+            margin-bottom: 8px;
         }
 
         .hero-title {
-            font-size: 40px;
+            font-size: 50px;
             font-weight: 700;
-            letter-spacing: -1px;
-            margin-bottom: 6px;
-            line-height: 1.1;
+            letter-spacing: -1.6px;
+            margin-bottom: 10px;
+            line-height: 1.05;
         }
 
         .hero-desc {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 400;
             color: var(--text-secondary);
-            max-width: 820px;
-            line-height: 1.4;
+            max-width: 900px;
+            line-height: 1.45;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
@@ -249,33 +250,72 @@
 
         /* Glass App Shelf */
         .shelf-wrapper {
-            background: var(--glass-shelf);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border: 1px solid var(--glass-border);
-            border-radius: 28px;
-            padding: 20px 26px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.045));
+            backdrop-filter: blur(26px);
+            -webkit-backdrop-filter: blur(26px);
+            border: 1px solid rgba(255, 255, 255, 0.17);
+            border-radius: 34px;
+            padding: 28px 36px 34px;
+            box-shadow: 0 34px 70px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.14);
         }
 
         .shelf-top-bar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 14px;
+            margin-bottom: 22px;
         }
 
         .shelf-header {
-            font-size: 14px;
+            font-size: 16px;
             font-weight: 700;
             color: var(--text-secondary);
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 1.8px;
         }
 
         .shelf-hint {
-            font-size: 13px;
+            font-size: 14px;
             color: var(--text-secondary);
+        }
+
+        .shelf-left,
+        .shelf-right {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* Auto-sort indicator. Reads as a status chip, not a call to action,
+           until it is focused — then it behaves like the other glass buttons. */
+        .sort-pill {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 7px 14px;
+            border-radius: 13px;
+            cursor: pointer;
+            outline: none;
+            color: var(--text-secondary);
+            background: rgba(255, 255, 255, 0.06);
+            border: 1.5px solid var(--glass-border);
+            will-change: transform;
+            transition: transform 0.22s cubic-bezier(0.22, 1.3, 0.36, 1), border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+        }
+
+        .sort-pill.on {
+            color: #30d158;
+            border-color: rgba(48, 209, 88, 0.42);
+            background: rgba(48, 209, 88, 0.13);
+        }
+
+        .sort-pill:hover,
+        .sort-pill:focus,
+        .sort-pill.focused {
+            transform: scale(1.07);
+            border-color: var(--glass-focus-border);
+            color: var(--text-primary);
         }
 
         .shelf-grid {
@@ -286,78 +326,95 @@
             flex-wrap: wrap;
             display: grid;
             grid-template-columns: repeat(8, 1fr);
-            gap: 18px;
+            gap: 22px;
         }
 
+        /* Icon-only tiles: the brand artwork is the label, so the whole card is
+           given over to it with generous padding and a rounded "glass pill" body. */
         .app-tile {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1.5px solid rgba(255, 255, 255, 0.1);
-            border-radius: 22px;
-            aspect-ratio: 1 / 1;
-            flex: 0 0 calc((100% - 18px * 7) / 8);
+            background: radial-gradient(120% 130% at 50% 0%, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.045) 70%);
+            border: 1.5px solid rgba(255, 255, 255, 0.12);
+            border-radius: 30px;
+            /* Explicit height instead of aspect-ratio: this Chromium 53 build
+               (webOS 4.x) does not support aspect-ratio, and with the text label
+               gone the card would collapse to its padding. */
+            height: 186px;
+            flex: 0 0 calc((100% - 22px * 7) / 8);
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            /* stretch (not center) so the artwork fills the card: percentage
+               heights do not resolve inside a centred flex item on Chromium 53,
+               which squeezed the icons into a thin strip. */
+            align-items: stretch;
             justify-content: center;
-            gap: 0;
             cursor: pointer;
             outline: none;
             position: relative;
             will-change: transform;
-            transition: transform 0.28s cubic-bezier(0.3, 1.4, 0.5, 1), border-color 0.2s ease, background 0.2s ease;
+            transition: transform 0.3s cubic-bezier(0.22, 1.3, 0.36, 1), border-color 0.25s ease, background 0.25s ease, box-shadow 0.3s ease;
             transform: scale(1) translateZ(0);
-            padding: 0;
+            padding: 20px;
+            animation: tileIn 0.52s cubic-bezier(0.22, 1.1, 0.36, 1) backwards;
+        }
+
+        @keyframes tileIn {
+            from {
+                opacity: 0;
+                transform: translateY(16px) scale(0.94);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
         }
 
         .app-tile:hover,
         .app-tile:focus,
         .app-tile.focused {
-            transform: scale(1.04) translateY(-4px) translateZ(0);
+            transform: translateY(-7px) scale(1.07) translateZ(0);
             border-color: var(--glass-focus-border);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 0 25px rgba(255, 255, 255, 0.25);
+            box-shadow: 0 26px 50px rgba(0, 0, 0, 0.62), 0 0 34px var(--tile-glow, rgba(255, 255, 255, 0.22));
             z-index: 20;
-            background: rgba(255, 255, 255, 0.17);
+            background: radial-gradient(120% 130% at 50% 0%, rgba(255, 255, 255, 0.26), rgba(255, 255, 255, 0.1) 70%);
         }
 
+        /* Pinned to the card's inner box instead of relying on flex stretch: the
+           tile is a <button>, and Chromium 53 does not stretch flex children
+           inside button elements, which flattened the artwork to a thin strip. */
         .app-icon {
-            width: 100%;
-            flex: 1;
-            min-height: 0;
-            border-radius: 20px 20px 0 0;
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            bottom: 18px;
+            left: 18px;
+            border-radius: 22px;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            position: relative;
+            transition: transform 0.3s cubic-bezier(0.22, 1.3, 0.36, 1);
         }
 
-        .app-icon svg { width: 75%; height: 75%; }
+        .app-tile:hover .app-icon,
+        .app-tile.focused .app-icon {
+            transform: scale(1.04);
+        }
+
+        .app-icon svg { width: 84%; height: 84%; }
         .app-icon img {
             position: absolute;
             width: 100%;
             height: 100%;
             object-fit: contain;
         }
-        .app-icon img.tile-brand-logo { width: 76%; height: 76%; }
+        .app-icon img.tile-brand-logo { width: 88%; height: 88%; }
         .app-art-fallback {
-            font-size: 25px;
+            font-size: 28px;
             font-weight: 800;
             color: #fff;
             text-align: center;
-            padding: 12px;
+            padding: 8px;
             overflow-wrap: break-word;
             max-width: 100%;
-        }
-        .app-label {
-            width: 100%;
-            padding: 12px 8px;
-            font-size: 15px;
-            font-weight: 600;
-            color: var(--text-primary);
-            text-align: center;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
         }
         .hdmi-options {
             /* Flexbox fallback for engines without CSS Grid; display: grid
@@ -386,33 +443,33 @@
         }
 
         .picks-header {
-            font-size: 14px;
+            font-size: 16px;
             font-weight: 700;
-            letter-spacing: 1.5px;
+            letter-spacing: 1.8px;
             text-transform: uppercase;
             color: var(--text-secondary);
         }
 
         .picks-source-badge {
-            font-size: 12px;
+            font-size: 13px;
             color: var(--text-secondary);
         }
 
         .picks-tabs {
             display: flex;
-            gap: 8px;
+            gap: 10px;
         }
 
         .picks-tab {
             background: rgba(255, 255, 255, 0.05);
             border: 1.5px solid var(--glass-border);
             color: var(--text-secondary);
-            font-size: 12px;
+            font-size: 13px;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            padding: 6px 16px;
-            border-radius: 12px;
+            letter-spacing: 1.1px;
+            padding: 8px 18px;
+            border-radius: 14px;
             cursor: pointer;
             outline: none;
             will-change: transform;
@@ -443,17 +500,17 @@
         }
 
         .pick-card {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.055);
             border: 1.5px solid var(--glass-border);
-            border-radius: 18px;
-            height: 128px;
+            border-radius: 24px;
+            height: 142px;
             flex: 0 0 calc((100% - 20px * 3) / 4);
             display: flex;
             overflow: hidden;
             cursor: pointer;
             outline: none;
             will-change: transform;
-            transition: transform 0.26s cubic-bezier(0.3, 1.4, 0.5, 1), border-color 0.2s ease, background 0.2s ease;
+            transition: transform 0.28s cubic-bezier(0.22, 1.3, 0.36, 1), border-color 0.22s ease, background 0.22s ease, box-shadow 0.28s ease;
             transform: translateZ(0);
             position: relative;
         }
@@ -461,42 +518,44 @@
         .pick-card:hover,
         .pick-card:focus,
         .pick-card.focused {
-            transform: scale(1.04) translateY(-4px) translateZ(0);
+            transform: translateY(-6px) scale(1.035) translateZ(0);
             border-color: var(--glass-focus-border);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.6), 0 0 20px rgba(255,255,255,0.2);
-            background: rgba(255, 255, 255, 0.14);
+            box-shadow: 0 22px 44px rgba(0, 0, 0, 0.62), 0 0 26px rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.15);
         }
 
         .pick-poster {
-            width: 92px;
+            width: 104px;
             height: 100%;
             background-size: cover;
             background-position: center;
             flex-shrink: 0;
             background-color: #1a2030;
+            border-radius: 22px 0 0 22px;
         }
 
         .pick-meta {
-            padding: 12px 16px;
+            padding: 14px 18px;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            gap: 4px;
+            gap: 5px;
             overflow: hidden;
         }
 
         .pick-badge {
-            font-size: 11px;
+            font-size: 12px;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.1px;
             color: var(--accent);
         }
 
         .pick-title {
             font-size: 16px;
             font-weight: 600;
-            letter-spacing: -0.3px;
+            letter-spacing: -0.4px;
+            font-size: 19px;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -504,7 +563,7 @@
 
         /* English original under the localized title, for reference */
         .pick-original {
-            font-size: 11px;
+            font-size: 12.5px;
             font-style: italic;
             letter-spacing: -0.1px;
             color: var(--text-secondary);
@@ -515,7 +574,7 @@
         }
 
         .pick-service {
-            font-size: 12px;
+            font-size: 13px;
             color: var(--text-secondary);
         }
 
@@ -880,7 +939,7 @@
                 <div class="brand-logo">
                     <svg viewBox="0 0 24 24"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg>
                 </div>
-                <div class="brand-title">Free My TV</div>
+                <div class="brand-title">TEINTINU TV</div>
                 <div class="tag-pill" id="themeBadge">60 FPS • Onboard</div>
             </div>
             <div class="header-info">
@@ -911,12 +970,17 @@
         <!-- Glass Shelf: Apps -->
         <div class="shelf-wrapper">
             <div class="shelf-top-bar">
-                <div class="shelf-header">Favorite Apps</div>
+                <div class="shelf-left">
+                    <div class="shelf-header">Favorite Apps</div>
+                    <button class="sort-pill nav-item" id="autoSortBtn" data-tag="Shelf Order" data-title="Automatic ordering" data-desc="Tiles follow how often you open each app in the last 7 days, falling back to all-time use.">Auto by use</button>
+                </div>
                 <div class="shelf-hint" id="shelfCountHint" aria-live="polite">Instant Native Launch</div>
-                <button class="header-btn nav-item" id="reorderShelfBtn" data-title="Reorder tiles" data-desc="Rearrange your apps right here on the shelf.">Reorder</button>
-                <div class="shelf-edit-actions" id="shelfEditActions" hidden>
-                    <button class="header-btn nav-item" id="saveShelfOrder" data-title="Save tile order">Done</button>
-                    <button class="header-btn nav-item" id="cancelShelfOrder" data-title="Cancel reordering">Cancel</button>
+                <div class="shelf-right">
+                    <button class="header-btn nav-item" id="reorderShelfBtn" data-title="Reorder tiles" data-desc="Rearrange your apps right here on the shelf.">Reorder</button>
+                    <div class="shelf-edit-actions" id="shelfEditActions" hidden>
+                        <button class="header-btn nav-item" id="saveShelfOrder" data-title="Save tile order">Done</button>
+                        <button class="header-btn nav-item" id="cancelShelfOrder" data-title="Cancel reordering">Cancel</button>
+                    </div>
                 </div>
             </div>
             <div class="shelf-grid" id="appsGrid"></div>
@@ -940,7 +1004,7 @@
     <div class="modal-backdrop" id="settingsModal">
         <div class="modal-box">
             <div class="modal-header">
-                <div class="modal-title">Customize Free My TV</div>
+                <div class="modal-title">Customize TEINTINU TV</div>
                 <div style="font-size: 13px; color: var(--text-secondary);">Press BACK or ESC to close</div>
             </div>
 
@@ -1153,6 +1217,7 @@
             lon: parseFloat(localStorage.getItem('fmtv_lon') || '0'),
             theme: localStorage.getItem('fmtv_theme') || 'auto',
             tmdbKey: localStorage.getItem('fmtv_tmdb_key') || '',
+            autoSort: localStorage.getItem('fmtv_autosort') !== 'off',
             catalog: DEFAULT_CATALOG.slice(),
             picksTab: 'movies',
             hourlyForecast: [],
@@ -1161,6 +1226,76 @@
             isSunset: false,
             isNight: true
         };
+
+        // --- Usage tracking (drives the automatic shelf order) ---
+        // Timestamps are stored rather than plain totals so "last 7 days" is a
+        // real rolling window. They are pruned to 30 days and capped, because a
+        // TV's web storage is small and never gets cleared by the user.
+        var USAGE_KEY = 'fmtv_usage';
+        var USAGE_WEEK_MS = 7 * 24 * 60 * 60 * 1000;
+        var USAGE_RETENTION_MS = 30 * 24 * 60 * 60 * 1000;
+        var USAGE_MAX_ENTRIES = 200;
+
+        function readUsageLog() {
+            try {
+                var parsed = JSON.parse(localStorage.getItem(USAGE_KEY) || '{}');
+                return parsed && typeof parsed === 'object' ? parsed : {};
+            } catch (e) {
+                return {};
+            }
+        }
+
+        function recordAppUsage(appId) {
+            var log = readUsageLog();
+            var now = Date.now();
+            var stamps = log[appId] || [];
+            var kept = [];
+            for (var i = 0; i < stamps.length; i++) {
+                if (now - stamps[i] < USAGE_RETENTION_MS) kept.push(stamps[i]);
+            }
+            kept.push(now);
+            if (kept.length > USAGE_MAX_ENTRIES) kept = kept.slice(kept.length - USAGE_MAX_ENTRIES);
+            log[appId] = kept;
+            try { localStorage.setItem(USAGE_KEY, JSON.stringify(log)); } catch (e) {}
+        }
+
+        // Nothing opened in the last week? Fall back to the all-time count, so a
+        // long-standing favourite does not sink below a single recent launch.
+        function usageScore(appId, log) {
+            var stamps = log[appId] || [];
+            var now = Date.now();
+            var lastWeek = 0;
+            for (var i = 0; i < stamps.length; i++) {
+                if (now - stamps[i] < USAGE_WEEK_MS) lastWeek++;
+            }
+            return lastWeek > 0 ? lastWeek : stamps.length;
+        }
+
+        function orderFavoritesByUsage(ids) {
+            if (!state.autoSort) return ids.slice();
+            var log = readUsageLog();
+            var scored = ids.map(function(id, index) {
+                return { id: id, index: index, score: usageScore(id, log) };
+            });
+            scored.sort(function(a, b) {
+                if (b.score !== a.score) return b.score - a.score;
+                return a.index - b.index; // ties keep the order the user saved
+            });
+            return scored.map(function(item) { return item.id; });
+        }
+
+        function hexToRgba(hex, alpha) {
+            var value = (hex || '').replace('#', '');
+            if (value.length === 3) {
+                value = value.charAt(0) + value.charAt(0) + value.charAt(1) +
+                        value.charAt(1) + value.charAt(2) + value.charAt(2);
+            }
+            if (value.length !== 6) return 'rgba(255, 255, 255, ' + alpha + ')';
+            var r = parseInt(value.slice(0, 2), 16);
+            var g = parseInt(value.slice(2, 4), 16);
+            var b = parseInt(value.slice(4, 6), 16);
+            return 'rgba(' + r + ', ' + g + ', ' + b + ', ' + alpha + ')';
+        }
 
         // --- Clock & Date ---
         function pad2(n) {
@@ -1606,12 +1741,15 @@
             var grid = document.getElementById('appsGrid');
             grid.innerHTML = '';
 
-            var favItems = (shelfEdit || state.favorites)
+            // While reordering, the tiles must stay in the exact order being edited,
+            // so usage sorting only applies to the live (non-edit) shelf.
+            var orderedIds = shelfEdit ? shelfEdit.slice() : orderFavoritesByUsage(state.favorites);
+            var favItems = orderedIds
                 .map(function(id) { return arrFind(state.catalog, function(c) { return c.id === id; }); })
                 .filter(Boolean)
                 .slice(0, 8);
 
-            favItems.forEach(function(app) {
+            favItems.forEach(function(app, index) {
                 var device = devicePreset(app, state.hdmiDevices);
                 var title = device.title || app.title;
                 var btn = document.createElement('button');
@@ -1623,6 +1761,11 @@
                 btn.dataset.desc = device.title ? 'Play ' + device.title + ' on ' + app.title + '.' : app.desc;
                 btn.setAttribute('aria-label', title + (device.title ? ' — ' + app.title : ''));
                 btn.dataset.color = app.color;
+                // Staggered entrance plus a focus glow tinted with the app's own
+                // colour — both animating only transform/opacity so the GPU keeps
+                // the 60 FPS promise while the D-Pad flies across the shelf.
+                btn.style.animationDelay = (index * 45) + 'ms';
+                btn.style.setProperty('--tile-glow', hexToRgba(app.color, 0.5));
 
                 var iconDiv = document.createElement('div');
                 iconDiv.className = 'app-icon';
@@ -1649,22 +1792,32 @@
                     }
                 }
 
-                var labelDiv = document.createElement('div');
-                labelDiv.className = 'app-label';
-                labelDiv.textContent = title + (device.title ? ' · ' + app.title : '');
-
                 btn.appendChild(iconDiv);
-                btn.appendChild(labelDiv);
 
                 btn.addEventListener('mouseenter', function() { setMainFocus(btn); });
                 btn.addEventListener('click', function() {
                     if (shelfEdit) { movingTileId = movingTileId === app.id ? null : app.id; renderAppsShelf(); focusShelfTile(app.id); }
-                    else launchApp(app.id);
+                    else {
+                        // Recorded on intent, not on the Luna reply: the launch is
+                        // what the user asked for even if the app then fails to open.
+                        recordAppUsage(app.id);
+                        launchApp(app.id);
+                    }
                 });
                 grid.appendChild(btn);
             });
 
-            document.getElementById('shelfCountHint').textContent = shelfEdit ? (movingTileId ? '← / → Move • OK Place • Back Cancel' : 'Select a tile • OK Pick up • Done to save') : favItems.length + ' Apps • Instant Launch';
+            var hint = document.getElementById('shelfCountHint');
+            if (shelfEdit) {
+                hint.textContent = movingTileId ? '← / → Move • OK Place • Back Cancel' : 'Select a tile • OK Pick up • Done to save';
+            } else {
+                hint.textContent = favItems.length + ' Apps • ' + (state.autoSort ? 'Ordered by use' : 'Manual order') + ' • Instant Launch';
+            }
+            var sortBtn = document.getElementById('autoSortBtn');
+            if (sortBtn) {
+                sortBtn.textContent = state.autoSort ? 'Auto: by use' : 'Manual order';
+                sortBtn.className = 'sort-pill nav-item' + (state.autoSort ? ' on' : '');
+            }
             refreshMainNavList();
         }
 
@@ -1748,6 +1901,19 @@
         document.querySelectorAll('#shelfEditActions button, #reorderShelfBtn').forEach(function(button) {
             button.addEventListener('mouseenter', function() { setMainFocus(button); });
         });
+
+        // Auto-sort can be switched off so the manual Reorder result sticks.
+        var autoSortBtn = document.getElementById('autoSortBtn');
+        if (autoSortBtn) {
+            autoSortBtn.addEventListener('click', function() {
+                state.autoSort = !state.autoSort;
+                try { localStorage.setItem('fmtv_autosort', state.autoSort ? 'on' : 'off'); } catch (e) {}
+                renderAppsShelf();
+                setMainFocus(autoSortBtn);
+                showToast(state.autoSort ? 'Shelf ordered by weekly use' : 'Manual shelf order kept');
+            });
+            autoSortBtn.addEventListener('mouseenter', function() { setMainFocus(autoSortBtn); });
+        }
 
         // --- Focus & Spatial Navigation ---
         var mainNavItems = [];
