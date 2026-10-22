@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -67,7 +67,8 @@
                snaps instantly on focus change so the GPU never re-blurs mid-transition
                while rapidly navigating with the remote's D-Pad. */
             transition: opacity 0.35s ease;
-            will-change: opacity;
+            will-change: opacity, transform;
+            animation: glowDrift 26s ease-in-out infinite;
             z-index: 1;
         }
 
@@ -112,67 +113,41 @@
         }
 
         .brand-title {
-            font-size: 33px;
+            font-size: 42px;
             font-weight: 700;
-            letter-spacing: -1px;
+            letter-spacing: -1.2px;
             white-space: nowrap;
         }
 
         .tag-pill {
-            font-size: 12px;
+            font-size: 13px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
             background: rgba(48, 209, 88, 0.15);
             color: #30d158;
             border: 1px solid rgba(48, 209, 88, 0.3);
-            padding: 5px 12px;
-            border-radius: 12px;
+            padding: 6px 14px;
+            border-radius: 13px;
         }
 
         .header-info {
             display: flex;
             align-items: center;
-            gap: 20px;
-        }
-
-        .header-btn {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--text-primary);
-            background: rgba(255, 255, 255, 0.07);
-            backdrop-filter: blur(14px);
-            padding: 10px 18px;
-            border-radius: 18px;
-            border: 1.5px solid var(--glass-border);
-            cursor: pointer;
-            outline: none;
-            will-change: transform;
-            transition: transform 0.22s cubic-bezier(0.3, 1.4, 0.5, 1), background 0.2s ease, border-color 0.2s ease;
-        }
-
-        .header-btn:hover,
-        .header-btn:focus,
-        .header-btn.focused {
-            background: rgba(255, 255, 255, 0.2);
-            border-color: var(--glass-focus-border);
-            transform: scale(1.06);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+            gap: 48px;
         }
 
         .weather-widget {
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 17px;
+            flex-shrink: 0;
+            white-space: nowrap;
+            gap: 12px;
+            font-size: 20px;
             color: var(--text-primary);
             background: rgba(255, 255, 255, 0.07);
-            backdrop-filter: blur(14px);
-            padding: 9px 18px;
-            border-radius: 18px;
+            padding: 12px 22px;
+            border-radius: 20px;
             border: 1.5px solid var(--glass-border);
             cursor: pointer;
             will-change: transform;
@@ -187,7 +162,7 @@
         }
 
         .weather-sub {
-            font-size: 13px;
+            font-size: 15px;
             color: var(--text-secondary);
         }
 
@@ -198,21 +173,21 @@
         }
 
         .clock {
-            font-size: 40px;
+            font-size: 48px;
             font-weight: 300;
-            letter-spacing: -1px;
+            letter-spacing: -1.2px;
             color: #ffffff;
         }
 
         .date {
-            font-size: 17px;
+            font-size: 20px;
             font-weight: 400;
             color: var(--text-secondary);
         }
 
         /* Top Shelf Hero Details */
         .hero-shelf {
-            height: 140px;
+            height: 176px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -220,27 +195,27 @@
         }
 
         .hero-tag {
-            font-size: 14px;
+            font-size: 16px;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 2.4px;
+            letter-spacing: 2.6px;
             color: var(--accent);
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
 
         .hero-title {
-            font-size: 50px;
+            font-size: 64px;
             font-weight: 700;
-            letter-spacing: -1.6px;
-            margin-bottom: 10px;
-            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: 12px;
+            line-height: 1.02;
         }
 
         .hero-desc {
-            font-size: 18px;
+            font-size: 21px;
             font-weight: 400;
             color: var(--text-secondary);
-            max-width: 900px;
+            max-width: 1000px;
             line-height: 1.45;
             display: -webkit-box;
             -webkit-line-clamp: 2;
@@ -251,11 +226,9 @@
         /* Glass App Shelf */
         .shelf-wrapper {
             background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.045));
-            backdrop-filter: blur(26px);
-            -webkit-backdrop-filter: blur(26px);
             border: 1px solid rgba(255, 255, 255, 0.17);
-            border-radius: 34px;
-            padding: 28px 36px 34px;
+            border-radius: 38px;
+            padding: 30px 40px 38px;
             box-shadow: 0 34px 70px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.14);
         }
 
@@ -263,70 +236,37 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 22px;
+            margin-bottom: 24px;
         }
 
         .shelf-header {
-            font-size: 16px;
+            font-size: 19px;
             font-weight: 700;
             color: var(--text-secondary);
             text-transform: uppercase;
-            letter-spacing: 1.8px;
+            letter-spacing: 2px;
         }
 
         .shelf-hint {
-            font-size: 14px;
+            font-size: 16px;
             color: var(--text-secondary);
         }
 
-        .shelf-left,
-        .shelf-right {
+        .shelf-left {
             display: flex;
             align-items: center;
             gap: 14px;
         }
 
-        /* Auto-sort indicator. Reads as a status chip, not a call to action,
-           until it is focused — then it behaves like the other glass buttons. */
-        .sort-pill {
-            font-size: 13px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            padding: 7px 14px;
-            border-radius: 13px;
-            cursor: pointer;
-            outline: none;
-            color: var(--text-secondary);
-            background: rgba(255, 255, 255, 0.06);
-            border: 1.5px solid var(--glass-border);
-            will-change: transform;
-            transition: transform 0.22s cubic-bezier(0.22, 1.3, 0.36, 1), border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
-        }
-
-        .sort-pill.on {
-            color: #30d158;
-            border-color: rgba(48, 209, 88, 0.42);
-            background: rgba(48, 209, 88, 0.13);
-        }
-
-        .sort-pill:hover,
-        .sort-pill:focus,
-        .sort-pill.focused {
-            transform: scale(1.07);
-            border-color: var(--glass-focus-border);
-            color: var(--text-primary);
-        }
 
         .shelf-grid {
-            /* Flexbox fallback for engines without CSS Grid (e.g. webOS 3.x /
-               Chromium 38); the display: grid line below overrides it on any
-               engine that understands grid, since it comes later in the cascade. */
+            /* Flexbox fallback for engines without CSS Grid (webOS 3.x / Chromium 38);
+               the display: grid line below overrides it wherever grid is supported. */
             display: flex;
             flex-wrap: wrap;
             display: grid;
             grid-template-columns: repeat(8, 1fr);
-            gap: 22px;
+            gap: 26px;
         }
 
         /* Icon-only tiles: the brand artwork is the label, so the whole card is
@@ -334,37 +274,51 @@
         .app-tile {
             background: radial-gradient(120% 130% at 50% 0%, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.045) 70%);
             border: 1.5px solid rgba(255, 255, 255, 0.12);
-            border-radius: 30px;
-            /* Explicit height instead of aspect-ratio: this Chromium 53 build
-               (webOS 4.x) does not support aspect-ratio, and with the text label
-               gone the card would collapse to its padding. */
-            height: 186px;
-            flex: 0 0 calc((100% - 22px * 7) / 8);
+            border-radius: 34px;
+            /* Explicit height: this Chromium 53 build has no aspect-ratio. */
+            height: 208px;
+            flex: 0 0 calc((100% - 26px * 7) / 8);
             display: flex;
-            /* stretch (not center) so the artwork fills the card: percentage
-               heights do not resolve inside a centred flex item on Chromium 53,
-               which squeezed the icons into a thin strip. */
             align-items: stretch;
             justify-content: center;
             cursor: pointer;
             outline: none;
             position: relative;
             will-change: transform;
-            transition: transform 0.3s cubic-bezier(0.22, 1.3, 0.36, 1), border-color 0.25s ease, background 0.25s ease, box-shadow 0.3s ease;
+            transition: transform 0.34s cubic-bezier(0.22, 1.3, 0.36, 1), border-color 0.25s ease, background 0.25s ease, box-shadow 0.34s ease;
             transform: scale(1) translateZ(0);
-            padding: 20px;
-            animation: tileIn 0.52s cubic-bezier(0.22, 1.1, 0.36, 1) backwards;
+            padding: 22px;
+            animation: tileIn 0.55s cubic-bezier(0.22, 1.1, 0.36, 1) backwards;
         }
 
         @keyframes tileIn {
             from {
                 opacity: 0;
-                transform: translateY(16px) scale(0.94);
+                transform: translateY(22px) scale(0.92);
             }
             to {
                 opacity: 1;
                 transform: translateY(0) scale(1);
             }
+        }
+
+        @keyframes cardIn {
+            from {
+                opacity: 0;
+                transform: translateY(26px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Slow drift on the ambient glow keeps the backdrop alive without any
+           paint work: only transform moves, and the gradient itself is static. */
+        @keyframes glowDrift {
+            0%   { transform: translate3d(-3%, 0, 0) scale(1); }
+            50%  { transform: translate3d(3%, 2%, 0) scale(1.08); }
+            100% { transform: translate3d(-3%, 0, 0) scale(1); }
         }
 
         .app-tile:hover,
@@ -382,16 +336,16 @@
            inside button elements, which flattened the artwork to a thin strip. */
         .app-icon {
             position: absolute;
-            top: 18px;
-            right: 18px;
-            bottom: 18px;
-            left: 18px;
-            border-radius: 22px;
+            top: 20px;
+            right: 20px;
+            bottom: 20px;
+            left: 20px;
+            border-radius: 26px;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            transition: transform 0.3s cubic-bezier(0.22, 1.3, 0.36, 1);
+            transition: transform 0.34s cubic-bezier(0.22, 1.3, 0.36, 1);
         }
 
         .app-tile:hover .app-icon,
@@ -406,14 +360,27 @@
             height: 100%;
             object-fit: contain;
         }
-        .app-icon img.tile-brand-logo { width: 88%; height: 88%; }
+        /* Logos de marca são wordmarks largos: largura percentual + altura automática
+           preserva a proporção do viewBox. Com width/height fixos o object-fit do
+           Chromium 53 esticava/cortava o desenho. */
+        .app-icon img.tile-brand-logo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 86%;
+            height: auto;
+            max-height: 86%;
+            transform: translate(-50%, -50%);
+        }
         .app-art-fallback {
-            font-size: 28px;
+            font-size: 32px;
             font-weight: 800;
+            line-height: 1.08;
             color: #fff;
             text-align: center;
-            padding: 8px;
+            padding: 8px 6px;
             overflow-wrap: break-word;
+            word-break: normal;
             max-width: 100%;
         }
         .hdmi-options {
@@ -443,15 +410,15 @@
         }
 
         .picks-header {
-            font-size: 16px;
+            font-size: 19px;
             font-weight: 700;
-            letter-spacing: 1.8px;
+            letter-spacing: 2px;
             text-transform: uppercase;
             color: var(--text-secondary);
         }
 
         .picks-source-badge {
-            font-size: 13px;
+            font-size: 15px;
             color: var(--text-secondary);
         }
 
@@ -464,16 +431,16 @@
             background: rgba(255, 255, 255, 0.05);
             border: 1.5px solid var(--glass-border);
             color: var(--text-secondary);
-            font-size: 13px;
+            font-size: 15px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1.1px;
-            padding: 8px 18px;
-            border-radius: 14px;
+            padding: 10px 22px;
+            border-radius: 16px;
             cursor: pointer;
             outline: none;
             will-change: transform;
-            transition: transform 0.2s cubic-bezier(0.3, 1.4, 0.5, 1), border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+            transition: transform 0.22s cubic-bezier(0.3, 1.4, 0.5, 1), border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
         }
 
         .picks-tab.active {
@@ -490,61 +457,67 @@
         }
 
         .picks-grid {
-            /* Flexbox fallback for engines without CSS Grid; display: grid
-               below overrides it on any engine that understands grid. */
             display: flex;
             flex-wrap: wrap;
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
+            gap: 24px;
         }
 
         .pick-card {
             background: rgba(255, 255, 255, 0.055);
             border: 1.5px solid var(--glass-border);
-            border-radius: 24px;
-            height: 142px;
-            flex: 0 0 calc((100% - 20px * 3) / 4);
+            border-radius: 28px;
+            height: 184px;
+            flex: 0 0 calc((100% - 24px * 3) / 4);
             display: flex;
             overflow: hidden;
             cursor: pointer;
             outline: none;
             will-change: transform;
-            transition: transform 0.28s cubic-bezier(0.22, 1.3, 0.36, 1), border-color 0.22s ease, background 0.22s ease, box-shadow 0.28s ease;
+            transition: transform 0.3s cubic-bezier(0.22, 1.3, 0.36, 1), border-color 0.22s ease, background 0.22s ease, box-shadow 0.3s ease;
             transform: translateZ(0);
             position: relative;
+            animation: cardIn 0.55s cubic-bezier(0.22, 1.1, 0.36, 1) backwards;
+        }
+
+        .pick-card:hover .pick-poster,
+        .pick-card.focused .pick-poster {
+            transform: scale(1.07);
         }
 
         .pick-card:hover,
         .pick-card:focus,
         .pick-card.focused {
-            transform: translateY(-6px) scale(1.035) translateZ(0);
+            transform: translateY(-8px) scale(1.04) translateZ(0);
             border-color: var(--glass-focus-border);
             box-shadow: 0 22px 44px rgba(0, 0, 0, 0.62), 0 0 26px rgba(255, 255, 255, 0.2);
             background: rgba(255, 255, 255, 0.15);
         }
 
         .pick-poster {
-            width: 104px;
+            width: 132px;
             height: 100%;
             background-size: cover;
             background-position: center;
             flex-shrink: 0;
             background-color: #1a2030;
-            border-radius: 22px 0 0 22px;
+            border-radius: 26px 0 0 26px;
+            transition: transform 0.34s cubic-bezier(0.22, 1.3, 0.36, 1);
+            will-change: transform;
         }
 
         .pick-meta {
-            padding: 14px 18px;
+            padding: 16px 22px;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            gap: 5px;
+            gap: 6px;
             overflow: hidden;
         }
 
         .pick-badge {
-            font-size: 12px;
+            font-size: 14px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1.1px;
@@ -552,7 +525,7 @@
         }
 
         .pick-title {
-            font-size: 19px;
+            font-size: 23px;
             font-weight: 600;
             letter-spacing: -0.4px;
             white-space: nowrap;
@@ -562,7 +535,7 @@
 
         /* English original under the localized title, for reference */
         .pick-original {
-            font-size: 12.5px;
+            font-size: 15px;
             font-style: italic;
             letter-spacing: -0.1px;
             color: var(--text-secondary);
@@ -573,7 +546,7 @@
         }
 
         .pick-service {
-            font-size: 13px;
+            font-size: 15px;
             color: var(--text-secondary);
         }
 
@@ -599,15 +572,15 @@
         }
 
         .modal-box {
-            width: 960px;
-            max-height: 86vh;
-            background: rgba(22, 27, 40, 0.92);
+            width: 1080px;
+            max-height: 88vh;
+            background: rgba(22, 27, 40, 0.95);
             border: 1px solid rgba(255, 255, 255, 0.18);
-            border-radius: 28px;
-            padding: 32px 38px;
+            border-radius: 32px;
+            padding: 36px 42px;
             display: flex;
             flex-direction: column;
-            gap: 22px;
+            gap: 24px;
             box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85);
             overflow-y: auto;
         }
@@ -621,17 +594,28 @@
         }
 
         .modal-title {
-            font-size: 26px;
+            font-size: 32px;
             font-weight: 700;
         }
 
+        .hint-inline {
+            font-size: 15px;
+            color: var(--text-secondary);
+        }
+
+        .hint-block {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin: 0 0 14px;
+        }
+
         .modal-section-title {
-            font-size: 14px;
+            font-size: 16px;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 1.6px;
             color: var(--accent);
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .app-selector-grid {
@@ -657,11 +641,11 @@
             justify-content: space-between;
             background: rgba(255, 255, 255, 0.06);
             border: 1.5px solid rgba(255, 255, 255, 0.1);
-            border-radius: 14px;
-            padding: 10px 14px;
+            border-radius: 16px;
+            padding: 12px 16px;
             cursor: pointer;
             color: var(--text-primary);
-            font-size: 14px;
+            font-size: 16px;
             font-weight: 500;
             transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
         }
@@ -677,11 +661,6 @@
             border-color: #ffffff;
             background: rgba(255, 255, 255, 0.16);
         }
-
-        .shelf-edit-actions { display: flex; align-items: center; gap: 10px; }
-        .shelf-edit-actions[hidden], #reorderShelfBtn[hidden] { display: none; }
-        .shelf-edit-actions button, #reorderShelfBtn { padding: 7px 14px; font-size: 14px; }
-        .app-tile.moving { outline: 3px solid #fff; transform: translateY(-8px); }
 
         .app-tile[aria-busy="true"] { border-color: var(--accent); }
 
@@ -703,17 +682,17 @@
         }
 
         .field-group label {
-            font-size: 13px;
+            font-size: 15px;
             color: var(--text-secondary);
         }
 
         .field-input {
             background: rgba(0, 0, 0, 0.35);
             border: 1.5px solid rgba(255, 255, 255, 0.16);
-            border-radius: 12px;
-            padding: 10px 14px;
+            border-radius: 14px;
+            padding: 13px 16px;
             color: #ffffff;
-            font-size: 14px;
+            font-size: 16px;
             outline: none;
         }
 
@@ -735,9 +714,9 @@
             background: var(--accent);
             color: #ffffff;
             border: 2px solid transparent;
-            padding: 10px 24px;
-            border-radius: 14px;
-            font-size: 15px;
+            padding: 13px 28px;
+            border-radius: 16px;
+            font-size: 17px;
             font-weight: 600;
             cursor: pointer;
         }
@@ -746,9 +725,9 @@
             background: rgba(255, 255, 255, 0.1);
             color: #ffffff;
             border: 2px solid transparent;
-            padding: 10px 20px;
-            border-radius: 14px;
-            font-size: 15px;
+            padding: 13px 24px;
+            border-radius: 16px;
+            font-size: 17px;
             font-weight: 600;
             cursor: pointer;
         }
@@ -762,16 +741,15 @@
         /* Toast Popup */
         .toast-msg {
             position: fixed;
-            top: 24px;
-            right: 36px;
-            background: rgba(20, 24, 35, 0.92);
-            backdrop-filter: blur(25px);
+            top: 28px;
+            right: 40px;
+            background: rgba(20, 24, 35, 0.94);
             border: 1px solid rgba(255, 255, 255, 0.22);
-            padding: 12px 20px;
-            border-radius: 14px;
-            font-size: 14px;
+            padding: 16px 26px;
+            border-radius: 16px;
+            font-size: 17px;
             font-weight: 600;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
             display: none;
             z-index: 1000;
         }
@@ -794,20 +772,18 @@
         }
 
         .drawer-panel {
-            width: 460px;
-            max-width: 90vw;
+            width: 560px;
+            max-width: 92vw;
             height: 100%;
-            background: rgba(18, 22, 34, 0.96);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            background: rgba(18, 22, 34, 0.97);
             border-left: 1px solid rgba(255, 255, 255, 0.14);
-            padding: 32px 30px;
+            padding: 36px 34px;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 24px;
             box-shadow: -20px 0 60px rgba(0, 0, 0, 0.6);
             transform: translateX(100%);
-            transition: transform 0.32s cubic-bezier(0.3, 1.1, 0.4, 1);
+            transition: transform 0.34s cubic-bezier(0.3, 1.1, 0.4, 1);
             overflow-y: auto;
         }
 
@@ -826,18 +802,20 @@
         }
 
         .drawer-current-temp {
-            font-size: 32px;
+            font-size: 44px;
             font-weight: 700;
+            white-space: nowrap;
+            line-height: 1.05;
         }
 
         .drawer-current-sub {
-            font-size: 14px;
+            font-size: 16px;
             color: var(--text-secondary);
         }
 
         .drawer-hourly {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             overflow-x: auto;
             padding: 4px 2px;
         }
@@ -845,47 +823,54 @@
         .drawer-hour-chip {
             background: rgba(255, 255, 255, 0.06);
             border: 1.5px solid var(--glass-border);
-            border-radius: 14px;
-            padding: 10px 8px;
+            border-radius: 16px;
+            padding: 12px 10px;
             text-align: center;
-            min-width: 58px;
-            flex-shrink: 0;
+            /* Divide a largura do painel entre as 6 horas: sem min-width fixo
+               nenhum chip fica cortado na borda. */
+            min-width: 0;
+            flex: 1 1 0;
         }
 
         .drawer-hour-time {
-            font-size: 12px;
+            font-size: 14px;
             color: var(--text-secondary);
         }
 
         .drawer-hour-icon {
-            font-size: 20px;
-            margin: 4px 0;
+            font-size: 24px;
+            margin: 5px 0;
         }
 
         .drawer-hour-temp {
-            font-size: 14px;
+            font-size: 16px;
             font-weight: 600;
         }
 
         .drawer-sun-row {
             display: flex;
-            gap: 24px;
+            gap: 16px;
         }
 
         .drawer-sun-item {
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 24px;
+            gap: 12px;
+            font-size: 26px;
+            flex: 1 1 0;
+            padding: 16px 18px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1.5px solid var(--glass-border);
         }
 
         .drawer-sun-label {
-            font-size: 12px;
+            font-size: 14px;
             color: var(--text-secondary);
         }
 
         .drawer-sun-value {
-            font-size: 17px;
+            font-size: 20px;
             font-weight: 600;
         }
 
@@ -911,25 +896,25 @@
         }
 
         .screensaver-clock {
-            font-size: 132px;
+            font-size: 150px;
             font-weight: 200;
-            letter-spacing: -2px;
+            letter-spacing: -3px;
             color: rgba(255, 255, 255, 0.82);
         }
 
         .screensaver-date {
-            font-size: 22px;
+            font-size: 26px;
             font-weight: 400;
             letter-spacing: 2px;
             text-transform: uppercase;
             color: rgba(255, 255, 255, 0.4);
-            margin-top: 6px;
+            margin-top: 8px;
         }
     </style>
 </head>
 <body>
     <div class="ambient-glow" id="ambientGlow"></div>
-    <div class="toast-msg" id="toastMsg" role="status" aria-live="polite">Launching...</div>
+    <div class="toast-msg" id="toastMsg" role="status" aria-live="polite">Abrindo…</div>
 
     <div class="container">
         <!-- Header -->
@@ -939,135 +924,123 @@
                     <svg viewBox="0 0 24 24"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg>
                 </div>
                 <div class="brand-title">TEINTINU TV</div>
-                <div class="tag-pill" id="themeBadge">60 FPS • Onboard</div>
+                <div class="tag-pill" id="themeBadge">60 FPS • na TV</div>
             </div>
             <div class="header-info">
-                <button class="header-btn nav-item" id="customizeBtn" data-tag="Personalize" data-title="Customize Shelf & Settings" data-desc="Choose which installed TV apps appear on your shelf, configure weather city, and TMDB key.">
-                    <span>⚙️ Customize</span>
-                </button>
-                <div class="weather-widget nav-item" id="weatherWidget" data-tag="Live Forecast" data-title="Local Weather & Sunset" data-desc="Live temperature and sky conditions powered by Open-Meteo.">
+                <div class="weather-widget nav-item" id="weatherWidget" data-tag="Agora" data-title="Clima e pôr do sol" data-desc="Temperatura e céu ao vivo pela Open-Meteo. Aperte OK para abrir o painel completo.">
                     <span id="weatherIcon">☀️</span>
                     <div>
-                        <div id="weatherText">Loading...</div>
-                        <div class="weather-sub" id="weatherSub">Auto-detecting</div>
+                        <div id="weatherText">Carregando…</div>
+                        <div class="weather-sub" id="weatherSub">Detectando cidade</div>
                     </div>
                 </div>
                 <div class="clock-group">
-                    <div class="date" id="dateText">Mon, Oct 19</div>
+                    <div class="date" id="dateText">seg, 19 de out</div>
                     <div class="clock" id="clockText">20:30</div>
                 </div>
             </div>
         </header>
 
-        <!-- Top Shelf (Hero Preview) -->
+        <!-- Destaque do item em foco -->
         <div class="hero-shelf">
-            <div class="hero-tag" id="heroTag">App Launcher</div>
-            <div class="hero-title" id="heroTitle">Clean & Ad-Free Home</div>
-            <div class="hero-desc" id="heroDesc">Navigate smoothly with Magic Remote D-Pad or pointer. Launch apps in 100ms with zero ads.</div>
+            <div class="hero-tag" id="heroTag">Sua TV</div>
+            <div class="hero-title" id="heroTitle">Sem anúncios, do seu jeito</div>
+            <div class="hero-desc" id="heroDesc">Navegue com o controle do Magic Remote ou pelas setas. Os apps abrem nativos, em cerca de 100 ms.</div>
         </div>
 
-        <!-- Glass Shelf: Apps -->
+        <!-- Prateleira de apps -->
         <div class="shelf-wrapper">
             <div class="shelf-top-bar">
                 <div class="shelf-left">
-                    <div class="shelf-header">Favorite Apps</div>
-                    <button class="sort-pill nav-item" id="autoSortBtn" data-tag="Shelf Order" data-title="Automatic ordering" data-desc="Tiles follow how often you open each app in the last 7 days, falling back to all-time use.">Auto by use</button>
+                    <div class="shelf-header">Seus apps</div>
                 </div>
-                <div class="shelf-hint" id="shelfCountHint" aria-live="polite">Instant Native Launch</div>
-                <div class="shelf-right">
-                    <button class="header-btn nav-item" id="reorderShelfBtn" data-title="Reorder tiles" data-desc="Rearrange your apps right here on the shelf.">Reorder</button>
-                    <div class="shelf-edit-actions" id="shelfEditActions" hidden>
-                        <button class="header-btn nav-item" id="saveShelfOrder" data-title="Save tile order">Done</button>
-                        <button class="header-btn nav-item" id="cancelShelfOrder" data-title="Cancel reordering">Cancel</button>
-                    </div>
-                </div>
+                <div class="shelf-hint" id="shelfCountHint" aria-live="polite">Ordenado pelo uso</div>
             </div>
             <div class="shelf-grid" id="appsGrid"></div>
         </div>
 
-        <!-- Trending Picks Row -->
+        <!-- Em alta na semana -->
         <div class="picks-section">
             <div class="picks-top-bar">
-                <div class="picks-header">Trending This Week</div>
+                <div class="picks-header">Em alta esta semana</div>
                 <div class="picks-tabs">
-                    <button class="picks-tab nav-item active" id="tabMovies" data-tag="Trending" data-title="Movies" data-desc="Switch the row below to this week's trending movies.">Movies</button>
-                    <button class="picks-tab nav-item" id="tabShows" data-tag="Trending" data-title="Shows" data-desc="Switch the row below to this week's trending TV shows.">Shows</button>
+                    <button class="picks-tab nav-item active" id="tabMovies" data-tag="Em alta" data-title="Filmes" data-desc="Troca a lista abaixo para os filmes em alta da semana.">Filmes</button>
+                    <button class="picks-tab nav-item" id="tabShows" data-tag="Em alta" data-title="Séries" data-desc="Troca a lista abaixo para as séries em alta da semana.">Séries</button>
                 </div>
-                <div class="picks-source-badge" id="picksSourceBadge">Live Feed</div>
+                <div class="picks-source-badge" id="picksSourceBadge">Ao vivo</div>
             </div>
             <div class="picks-grid" id="picksGrid"></div>
         </div>
     </div>
 
-    <!-- Customize Shelf & Settings Modal -->
+    <!-- Personalizar prateleira e ajustes -->
     <div class="modal-backdrop" id="settingsModal">
         <div class="modal-box">
             <div class="modal-header">
-                <div class="modal-title">Customize TEINTINU TV</div>
-                <div style="font-size: 13px; color: var(--text-secondary);">Press BACK or ESC to close</div>
+                <div class="modal-title">Personalizar TEINTINU TV</div>
+                <div class="hint-inline">Aperte VOLTAR ou ESC para fechar</div>
             </div>
 
             <div>
-                <div class="modal-section-title">1. Select Apps for Glass Shelf (Click to Toggle)</div>
+                <div class="modal-section-title">1. Apps na prateleira (aperte para marcar)</div>
                 <div class="app-selector-grid" id="appSelectorGrid"></div>
-
             </div>
 
             <div>
-                <div class="modal-section-title">2. HDMI Devices</div>
-                <p style="color: var(--text-secondary); margin: 0 0 12px;">Press a port to cycle its device. Save &amp; Apply to keep your choices.</p>
+                <div class="modal-section-title">2. Aparelhos nas portas HDMI</div>
+                <p class="hint-block">Aperte uma porta para trocar o aparelho. Use Salvar e aplicar para confirmar.</p>
                 <div class="hdmi-options" id="hdmiOptions"></div>
             </div>
 
             <div>
-                <div class="modal-section-title">3. Weather, Theme & TMDB API</div>
+                <div class="modal-section-title">3. Cidade, tema e chave do TMDB</div>
                 <div class="settings-row">
                     <div class="field-group">
-                        <label>City Name (or leave Auto)</label>
-                        <input type="text" class="field-input modal-nav" id="cfgCity" placeholder="e.g. Sao Paulo, Lisbon, NYC">
+                        <label>Cidade (ou deixe em branco para detectar)</label>
+                        <input type="text" class="field-input modal-nav" id="cfgCity" placeholder="ex.: São Paulo">
                     </div>
                     <div class="field-group">
-                        <label>Theme Mode</label>
+                        <label>Tema</label>
                         <select class="field-input modal-nav" id="cfgTheme">
-                            <option value="auto">Auto (Follows Sunset)</option>
-                            <option value="night">Deep Midnight (Default)</option>
-                            <option value="oled">Pure OLED Black</option>
-                            <option value="day">Daylight Blue</option>
+                            <option value="auto">Automático (segue o pôr do sol)</option>
+                            <option value="night">Meia-noite profunda</option>
+                            <option value="oled">Preto OLED puro</option>
+                            <option value="day">Azul diurno</option>
                         </select>
                     </div>
                     <div class="field-group">
-                        <label>TMDB API Key (Optional)</label>
-                        <input type="text" class="field-input modal-nav" id="cfgTmdbKey" placeholder="Optional for TMDB Trending">
+                        <label>Chave da API do TMDB (opcional)</label>
+                        <input type="text" class="field-input modal-nav" id="cfgTmdbKey" placeholder="Opcional, para o Em alta">
                     </div>
                 </div>
             </div>
 
             <div class="modal-actions">
-                <button class="btn-secondary modal-nav" id="resetDefaultBtn">Reset Defaults</button>
-                <button class="btn-secondary modal-nav" id="closeModalBtn">Cancel</button>
-                <button class="btn-primary modal-nav" id="saveModalBtn">Save & Apply</button>
+                <button class="btn-secondary modal-nav" id="resetDefaultBtn">Restaurar padrões</button>
+                <button class="btn-secondary modal-nav" id="closeModalBtn">Cancelar</button>
+                <button class="btn-primary modal-nav" id="saveModalBtn">Salvar e aplicar</button>
             </div>
         </div>
     </div>
 
-    <!-- Weather & Sun Drawer -->
+    <!-- Painel de clima e sol -->
     <div class="drawer-backdrop" id="weatherDrawer">
         <div class="drawer-panel">
             <div class="modal-header">
-                <div class="modal-title">Weather & Sun</div>
-                <div style="font-size: 13px; color: var(--text-secondary);">Press BACK or ESC to close</div>
+                <div class="modal-title">Clima e sol</div>
+                <div class="hint-inline">Aperte VOLTAR ou ESC para fechar</div>
             </div>
 
             <div class="drawer-current">
                 <span class="drawer-current-icon" id="drawerIcon">☀️</span>
                 <div>
                     <div class="drawer-current-temp" id="drawerTemp">--°C</div>
-                    <div class="drawer-current-sub" id="drawerCityLabel">Loading...</div>
+                    <div class="drawer-current-sub" id="drawerCityLabel">Carregando…</div>
                 </div>
             </div>
 
             <div>
-                <div class="modal-section-title">Next Hours</div>
+                <div class="modal-section-title">Próximas horas</div>
                 <div class="drawer-hourly" id="drawerHourly"></div>
             </div>
 
@@ -1075,51 +1048,67 @@
                 <div class="drawer-sun-item">
                     <span>🌅</span>
                     <div>
-                        <div class="drawer-sun-label">Sunrise</div>
+                        <div class="drawer-sun-label">Nascer do sol</div>
                         <div class="drawer-sun-value" id="drawerSunrise">--:--</div>
                     </div>
                 </div>
                 <div class="drawer-sun-item">
                     <span>🌇</span>
                     <div>
-                        <div class="drawer-sun-label">Sunset</div>
+                        <div class="drawer-sun-label">Pôr do sol</div>
                         <div class="drawer-sun-value" id="drawerSunset">--:--</div>
                     </div>
                 </div>
             </div>
 
             <div class="modal-actions">
-                <button class="btn-secondary" id="closeDrawerBtn">Close</button>
+                <button class="btn-secondary nav-item" id="drawerSettingsBtn">⚙ Ajustes</button>
+                <button class="btn-secondary" id="closeDrawerBtn">Fechar</button>
             </div>
         </div>
     </div>
 
-    <!-- OLED-Safe Idle Screensaver -->
+    <!-- Protetor de tela OLED -->
     <div class="screensaver" id="screensaverOverlay">
         <div class="screensaver-clock-wrap" id="screensaverClockWrap">
             <div class="screensaver-clock" id="screensaverClock">20:30</div>
-            <div class="screensaver-date" id="screensaverDate">Mon, Oct 19</div>
+            <div class="screensaver-date" id="screensaverDate">seg, 19 de out</div>
         </div>
     </div>
 
     <script>
-        // --- Default Catalog of Apps ---
-        var DEFAULT_CATALOG = [
-            { id: 'youtube.leanback.v4', title: 'YouTube', tag: 'Streaming', desc: 'Watch 4K videos, live streams, music, and coding radio.', color: '#ff0000', badge: 'YT', bg: 'linear-gradient(135deg, #ff0000, #b00000)' },
-            { id: 'netflix', title: 'Netflix', tag: 'Movies & Series', desc: 'Unlimited movies, TV shows, and originals in 4K Dolby Vision.', color: '#e50914', badge: 'N', bg: 'linear-gradient(135deg, #1f1f1f, #080808)' },
-            { id: 'cdp-30', title: 'Plex', tag: 'Personal Media', desc: 'Stream your personal home cinema, movies, and music library.', color: '#e5a00d', badge: '>', bg: 'linear-gradient(135deg, #e5a00d, #9e6d00)' },
-            { id: 'com.crunchyroll.webapp', title: 'Crunchyroll', tag: 'Anime', desc: 'Stream the world\'s largest anime library and simulcasts.', color: '#f47521', badge: 'CR', bg: 'linear-gradient(135deg, #f47521, #c4570d)' },
-            { id: 'globoplaywebos', title: 'Globoplay', tag: 'Brazil Streaming', desc: 'Original series, live channels, sports, and cinema.', color: '#fb003f', badge: 'globo', bg: 'linear-gradient(135deg, #fb003f, #aa002a)' },
-            { id: 'com.webos.app.hdmi1', title: 'HDMI 1', tag: 'External Input', desc: 'Switch directly to HDMI 1 (PC / Gaming Console).', color: '#0a84ff', badge: 'HDMI 1', bg: 'linear-gradient(135deg, #0a84ff, #004ec4)' },
-            { id: 'com.webos.app.hdmi2', title: 'HDMI 2', tag: 'External Input', desc: 'Switch directly to HDMI 2 input.', color: '#00c7be', badge: 'HDMI 2', bg: 'linear-gradient(135deg, #00c7be, #007a74)' },
-            { id: 'com.webos.app.hdmi3', title: 'HDMI 3', tag: 'External Input', desc: 'Switch directly to HDMI 3 input.', color: '#0a84ff', badge: 'HDMI 3', bg: 'linear-gradient(135deg, #0a84ff, #004ec4)' },
-            { id: 'com.webos.app.hdmi4', title: 'HDMI 4', tag: 'External Input', desc: 'Switch directly to HDMI 4 input.', color: '#0a84ff', badge: 'HDMI 4', bg: 'linear-gradient(135deg, #0a84ff, #004ec4)' },
-            { id: 'com.webos.app.browser', title: 'Browser', tag: 'Internet', desc: 'Full-screen web browsing on your LG Smart TV.', color: '#5856d6', badge: 'WEB', bg: 'linear-gradient(135deg, #5856d6, #3634a3)' },
-            { id: 'org.webosbrew.hbchannel', title: 'Homebrew', tag: 'System', desc: 'Homebrew Channel app store, YouTube AdFree, and system tweaks.', color: '#cf0652', badge: 'HB', bg: 'linear-gradient(135deg, #cf0652, #8b0034)' },
-            { id: 'com.webos.app.mediadiscovery', title: 'Media Player', tag: 'Local Media', desc: 'Play photos, videos, and music from USB or DLNA servers.', color: '#7e56b1', badge: 'USB', bg: 'linear-gradient(135deg, #7e56b1, #4f3278)' },
-            { id: 'amazon', title: 'Prime Video', tag: 'Movies & Shows', desc: 'Watch Amazon Originals, popular movies, and live sports.', color: '#00a8e1', badge: 'prime', bg: 'linear-gradient(135deg, #00a8e1, #00628a)' },
-            { id: 'com.disney.disneyplus-prod', title: 'Disney+', tag: 'Streaming', desc: 'Disney, Pixar, Marvel, Star Wars, and National Geographic.', color: '#113ccf', badge: 'D+', bg: 'linear-gradient(135deg, #113ccf, #071961)' },
-            { id: 'spotify-beehive', title: 'Spotify', tag: 'Music', desc: 'Listen to millions of songs, albums, and podcasts on your TV.', color: '#1db954', badge: 'SP', bg: 'linear-gradient(135deg, #1db954, #0f7833)' }
+        // --- Metadados dos apps que conhecemos ------------------------------------
+        // Nada disso é a lista exibida na prateleira: serve só para decorar os
+        // apps com logo de marca, cor e texto em português. A lista de verdade
+        // vem dos apps instalados na TV (loadInstalledApps).
+        var KNOWN_APPS = {
+            'youtube.leanback.v4': { title: 'YouTube', tag: 'Streaming', desc: 'Vídeos em 4K, transmissões ao vivo, música e podcasts.', color: '#ff0000', logo: 'youtube', bg: 'linear-gradient(135deg, #ff0000, #b00000)' },
+            'netflix': { title: 'Netflix', tag: 'Filmes e séries', desc: 'Filmes, séries e originais em 4K com Dolby Vision.', color: '#e50914', logo: 'netflix', bg: 'linear-gradient(135deg, #1f1f1f, #080808)' },
+            'cdp-30': { title: 'Plex', tag: 'Mídia pessoal', desc: 'Seu cinema em casa: filmes, séries e músicas do seu servidor.', color: '#e5a00d', logo: 'plex', bg: 'linear-gradient(135deg, #e5a00d, #9e6d00)' },
+            'com.crunchyroll.webapp': { title: 'Crunchyroll', tag: 'Animes', desc: 'O maior catálogo de animes e simulcasts do mundo.', color: '#f47521', logo: 'crunchyroll', bg: 'linear-gradient(135deg, #f47521, #c4570d)' },
+            'globoplaywebos': { title: 'Globoplay', tag: 'Streaming brasileiro', desc: 'Séries originais, canais ao vivo, esportes e cinema.', color: '#fb003f', logo: 'globoplay', bg: 'linear-gradient(135deg, #fb003f, #aa002a)' },
+            'com.webos.app.hdmi1': { title: 'HDMI 1', tag: 'Entrada externa', desc: 'Ir direto para a entrada HDMI 1 (PC ou videogame).', color: '#0a84ff', bg: 'linear-gradient(135deg, #0a84ff, #004ec4)' },
+            'com.webos.app.hdmi2': { title: 'HDMI 2', tag: 'Entrada externa', desc: 'Ir direto para a entrada HDMI 2.', color: '#00c7be', bg: 'linear-gradient(135deg, #00c7be, #007a74)' },
+            'com.webos.app.hdmi3': { title: 'HDMI 3', tag: 'Entrada externa', desc: 'Ir direto para a entrada HDMI 3.', color: '#0a84ff', bg: 'linear-gradient(135deg, #0a84ff, #004ec4)' },
+            'com.webos.app.hdmi4': { title: 'HDMI 4', tag: 'Entrada externa', desc: 'Ir direto para a entrada HDMI 4.', color: '#0a84ff', bg: 'linear-gradient(135deg, #0a84ff, #004ec4)' },
+            'com.webos.app.browser': { title: 'Navegador', tag: 'Internet', desc: 'Navegação em tela cheia na sua TV LG.', color: '#5856d6', bg: 'linear-gradient(135deg, #5856d6, #3634a3)' },
+            'org.webosbrew.hbchannel': { title: 'Homebrew', tag: 'Sistema', desc: 'Loja do Homebrew Channel, YouTube sem anúncios e ajustes do sistema.', color: '#cf0652', bg: 'linear-gradient(135deg, #cf0652, #8b0034)' },
+            'com.webos.app.mediadiscovery': { title: 'Player de mídia', tag: 'Mídia local', desc: 'Fotos, vídeos e músicas de pendrive ou servidor DLNA.', color: '#7e56b1', bg: 'linear-gradient(135deg, #7e56b1, #4f3278)' },
+            'amazon': { title: 'Prime Video', tag: 'Filmes e séries', desc: 'Originais Amazon, filmes populares e esportes ao vivo.', color: '#00a8e1', logo: 'amazonprime', bg: 'linear-gradient(135deg, #00a8e1, #00628a)' },
+            'com.disney.disneyplus-prod': { title: 'Disney+', tag: 'Streaming', desc: 'Disney, Pixar, Marvel, Star Wars e National Geographic.', color: '#113ccf', logo: 'disneyplus', bg: 'linear-gradient(135deg, #113ccf, #071961)' },
+            'spotify-beehive': { title: 'Spotify', tag: 'Música', desc: 'Milhões de músicas, álbuns e podcasts na sua TV.', color: '#1db954', logo: 'spotify', bg: 'linear-gradient(135deg, #1db954, #0f7833)' }
+        };
+
+        // Reserva usada só quando a TV não devolve inventário (ver loadInstalledApps).
+        var FALLBACK_ORDER = [
+            'youtube.leanback.v4',
+            'netflix',
+            'amazon',
+            'com.disney.disneyplus-prod',
+            'com.crunchyroll.webapp',
+            'com.webos.app.hdmi1',
+            'com.webos.app.browser',
+            'globoplaywebos'
         ];
 
         // Device artwork is bundled inline so HDMI tiles also work offline.
@@ -1149,16 +1138,6 @@
             };
             return '<svg viewBox="0 0 120 120" aria-hidden="true">' + drawings[shape] + '</svg>';
         }
-        var APP_LOGOS = {
-            'youtube.leanback.v4': 'youtube',
-            'netflix': 'netflix',
-            'cdp-30': 'plex',
-            'com.crunchyroll.webapp': 'crunchyroll',
-            'globoplaywebos': 'globoplay',
-            'amazon': 'amazonprime',
-            'com.disney.disneyplus-prod': 'disneyplus',
-            'spotify-beehive': 'spotify'
-        };
         function addTileImage(container, url, branded) {
             var img = document.createElement('img');
             img.alt = '';
@@ -1179,45 +1158,32 @@
             return ''; // Unresolvable paths use the readable tile fallback.
         }
 
-        // Defaults favor the streaming apps with the broadest global install base
-        // (YouTube/Netflix/Prime/Disney+) over niche regional or personal-media apps
-        // like Plex or Globoplay, which stay one tap away in Customize for anyone who uses them.
-        var DEFAULT_FAVORITES = [
-            'youtube.leanback.v4',
-            'netflix',
-            'amazon',
-            'com.disney.disneyplus-prod',
-            'com.crunchyroll.webapp',
-            'com.webos.app.hdmi1',
-            'com.webos.app.browser',
-            'org.webosbrew.hbchannel'
-        ];
 
         var FALLBACK_MOVIES = [
-            { title: 'Dune: Part Two', badge: 'Sci-Fi • 8.8★', service: 'Watch on Max / Netflix', app: 'netflix', desc: 'Paul Atreides unites with Chani and the Fremen while seeking revenge against the conspirators.', poster: 'https://image.tmdb.org/t/p/w300/8b8R8l88Qje9dn9OE8PY05Nxl1X.jpg', color: '#e5a00d' },
-            { title: 'Oppenheimer', badge: 'Drama • 8.3★', service: 'Watch on Prime Video', app: 'amazon', desc: 'The story of American scientist J. Robert Oppenheimer and his role in developing the atomic bomb.', poster: '', color: '#00a8e1' },
-            { title: 'Spider-Man: Across the Spider-Verse', badge: 'Animation • 8.6★', service: 'Watch on Netflix', app: 'netflix', desc: 'Miles Morales catapults across the Multiverse to team up with Gwen Stacy and a new crew of Spider-People.', poster: '', color: '#5856d6' },
-            { title: 'Barbie', badge: 'Comedy • 7.0★', service: 'Watch on Max', app: 'netflix', desc: 'Barbie and Ken venture from Barbie Land to the real world in search of true happiness.', poster: '', color: '#ff375f' }
+            { title: 'Duna: Parte 2', badge: 'Ficção • 8.8★', service: 'Assistir na Max / Netflix', app: 'netflix', desc: 'Paul Atreides se une a Chani e aos Fremen para se vingar dos conspiradores.', poster: 'https://image.tmdb.org/t/p/w300/8b8R8l88Qje9dn9OE8PY05Nxl1X.jpg', color: '#e5a00d' },
+            { title: 'Oppenheimer', badge: 'Drama • 8.3★', service: 'Assistir no Prime Video', app: 'amazon', desc: 'A história do cientista J. Robert Oppenheimer e seu papel na criação da bomba atômica.', poster: '', color: '#00a8e1' },
+            { title: 'Homem-Aranha: Através do Aranhaverso', badge: 'Animação • 8.6★', service: 'Assistir na Netflix', app: 'netflix', desc: 'Miles Morales atravessa o multiverso ao lado de Gwen Stacy e uma nova equipe de Aranhas.', poster: '', color: '#5856d6' },
+            { title: 'Barbie', badge: 'Comédia • 7.0★', service: 'Assistir na Max', app: 'netflix', desc: 'Barbie e Ken saem da Barbielândia rumo ao mundo real em busca da felicidade.', poster: '', color: '#ff375f' }
         ];
 
         var FALLBACK_SHOWS = [
-            { title: 'Severance', badge: 'Thriller • 8.7★', service: 'Trending Series', app: 'netflix', desc: 'Mark leads a team of office workers whose memories have been surgically divided between work and personal lives.', poster: 'https://image.tmdb.org/t/p/w300/e9Lra4Wv77L84a0d8lEwB47zYqS.jpg', color: '#0a84ff' },
-            { title: 'Demon Slayer: Infinity', badge: 'Anime • 8.9★', service: 'Watch on Crunchyroll', app: 'com.crunchyroll.webapp', desc: 'Tanjiro and the Hashira face the Upper Rank demons in the final stronghold.', poster: 'https://image.tmdb.org/t/p/w300/xUfRZu2mi8jH6SzQEJGP6tjBuYj.jpg', color: '#f47521' },
-            { title: 'The Last of Us', badge: 'Drama • 8.8★', service: 'Watch on Max', app: 'netflix', desc: 'Joel and Ellie navigate a brutal, infected America in search of a cure.', poster: '', color: '#e5a00d' },
-            { title: 'Stranger Things', badge: 'Sci-Fi • 8.6★', service: 'Watch on Netflix', app: 'netflix', desc: 'A group of kids uncover supernatural mysteries in the small town of Hawkins, Indiana.', poster: '', color: '#ff0000' }
+            { title: 'Ruptura', badge: 'Suspense • 8.7★', service: 'Séries em alta', app: 'netflix', desc: 'Mark comanda uma equipe cujas memórias são divididas cirurgicamente entre trabalho e vida pessoal.', poster: 'https://image.tmdb.org/t/p/w300/e9Lra4Wv77L84a0d8lEwB47zYqS.jpg', color: '#0a84ff' },
+            { title: 'Demon Slayer: Castelo Infinito', badge: 'Anime • 8.9★', service: 'Assistir na Crunchyroll', app: 'com.crunchyroll.webapp', desc: 'Tanjiro e os Hashira enfrentam as Luas Superiores na fortaleza final.', poster: 'https://image.tmdb.org/t/p/w300/xUfRZu2mi8jH6SzQEJGP6tjBuYj.jpg', color: '#f47521' },
+            { title: 'The Last of Us', badge: 'Drama • 8.8★', service: 'Assistir na Max', app: 'netflix', desc: 'Joel e Ellie cruzam uma América devastada por uma infecção em busca de uma cura.', poster: '', color: '#e5a00d' },
+            { title: 'Stranger Things', badge: 'Ficção • 8.6★', service: 'Assistir na Netflix', app: 'netflix', desc: 'Um grupo de crianças investiga mistérios sobrenaturais na pequena Hawkins, Indiana.', poster: '', color: '#ff0000' }
         ];
 
         // --- Persistent State ---
         var state = {
-            favorites: JSON.parse(localStorage.getItem('fmtv_favorites') || 'null') || DEFAULT_FAVORITES.slice(),
+            // Prateleira: ids escolhidos (null = ainda não descoberto; usa os 8 mais usados)
+            favorites: JSON.parse(localStorage.getItem('fmtv_favorites') || 'null'),
             hdmiDevices: readDeviceChoices(),
             city: localStorage.getItem('fmtv_city') || '',
             lat: parseFloat(localStorage.getItem('fmtv_lat') || '0'),
             lon: parseFloat(localStorage.getItem('fmtv_lon') || '0'),
             theme: localStorage.getItem('fmtv_theme') || 'auto',
             tmdbKey: localStorage.getItem('fmtv_tmdb_key') || '',
-            autoSort: localStorage.getItem('fmtv_autosort') !== 'off',
-            catalog: DEFAULT_CATALOG.slice(),
+            catalog: [],
             picksTab: 'movies',
             hourlyForecast: [],
             sunrise: '',
@@ -1270,8 +1236,7 @@
             return lastWeek > 0 ? lastWeek : stamps.length;
         }
 
-        function orderFavoritesByUsage(ids) {
-            if (!state.autoSort) return ids.slice();
+        function sortIdsByUsage(ids) {
             var log = readUsageLog();
             var scored = ids.map(function(id, index) {
                 return { id: id, index: index, score: usageScore(id, log) };
@@ -1337,7 +1302,7 @@
             document.getElementById('clockText').textContent = timeStr;
 
             var opts = { weekday: 'short', month: 'short', day: 'numeric' };
-            var dateStr = now.toLocaleDateString('en-US', opts);
+            var dateStr = now.toLocaleDateString('pt-BR', opts);
             document.getElementById('dateText').textContent = dateStr;
 
             document.getElementById('screensaverClock').textContent = timeStr;
@@ -1361,31 +1326,36 @@
             var badge = document.getElementById('themeBadge');
             if (state.theme === 'oled') {
                 document.body.classList.add('theme-oled');
-                badge.textContent = 'OLED Zero • 60 FPS';
+                badge.textContent = 'Preto OLED • 60 FPS';
             } else if (state.theme === 'day') {
                 document.body.classList.add('theme-day');
-                badge.textContent = 'Daylight • 60 FPS';
+                badge.textContent = 'Dia • 60 FPS';
             } else if (state.theme === 'auto') {
                 if (state.isSunset) {
                     document.body.classList.add('theme-sunset');
-                    badge.textContent = 'Sunset • 60 FPS';
+                    badge.textContent = 'Pôr do sol • 60 FPS';
                 } else if (!state.isNight) {
                     document.body.classList.add('theme-day');
-                    badge.textContent = 'Daylight • 60 FPS';
+                    badge.textContent = 'Dia • 60 FPS';
                 } else {
-                    badge.textContent = 'Night • 60 FPS';
+                    badge.textContent = 'Noite • 60 FPS';
                 }
             } else {
-                badge.textContent = '60 FPS • Onboard';
+                badge.textContent = '60 FPS • na TV';
             }
         }
 
         // --- Live Weather & Sunset (Open-Meteo) ---
         var WMO_CODES = {
-            0: ['☀️', 'Clear Sky'], 1: ['🌤️', 'Mostly Clear'], 2: ['⛅', 'Partly Cloudy'],
-            3: ['☁️', 'Overcast'], 45: ['🌫️', 'Foggy'], 51: ['🌦️', 'Light Drizzle'],
-            61: ['🌧️', 'Rain'], 63: ['🌧️', 'Moderate Rain'], 71: ['❄️', 'Snow'],
-            80: ['🌦️', 'Rain Showers'], 95: ['⛈️', 'Thunderstorm']
+            // Só glifos do plano básico (BMP): a fonte desta TV não tem os emojis
+            // 1F3xx e eles apareciam como quadradinho vazio nos chips de hora.
+            0: ['☀️', 'Céu limpo'], 1: ['⛅', 'Quase limpo'], 2: ['⛅', 'Parcialmente nublado'],
+            3: ['☁️', 'Nublado'], 45: ['☁️', 'Névoa'], 48: ['☁️', 'Névoa com geada'],
+            51: ['☔', 'Garoa fraca'], 53: ['☔', 'Garoa'], 55: ['☔', 'Garoa forte'],
+            61: ['☔', 'Chuva'], 63: ['☔', 'Chuva moderada'], 65: ['☔', 'Chuva forte'],
+            71: ['❄️', 'Neve'], 73: ['❄️', 'Neve'], 75: ['❄️', 'Neve forte'],
+            80: ['☔', 'Pancadas de chuva'], 81: ['☔', 'Pancadas moderadas'], 82: ['☔', 'Pancadas fortes'],
+            95: ['⛈️', 'Tempestade'], 96: ['⛈️', 'Tempestade com granizo'], 99: ['⛈️', 'Tempestade forte']
         };
 
         // Written as .then() chains (no async/await) and guarded against a
@@ -1394,8 +1364,8 @@
         // synchronously and abort the rest of the boot sequence below it.
         function fetchWeather() {
             if (typeof fetch !== 'function') {
-                document.getElementById('weatherText').textContent = '22°C • Clear';
-                document.getElementById('weatherSub').textContent = state.city || 'Offline Mode';
+                document.getElementById('weatherText').textContent = '22°C • Céu limpo';
+                document.getElementById('weatherSub').textContent = state.city || 'Sem conexão';
                 return;
             }
 
@@ -1426,7 +1396,7 @@
                                 if (ipData.latitude && ipData.longitude) {
                                     lat = ipData.latitude;
                                     lon = ipData.longitude;
-                                    cityLabel = ipData.city || 'Local';
+                                    cityLabel = ipData.city || 'Sua região';
                                 }
                             })
                             .catch(function() {});
@@ -1459,7 +1429,7 @@
                         var temp = Math.round(data.current.temperature_2m);
                         var code = data.current.weather_code;
                         var isDay = data.current.is_day === 1;
-                        var wmo = WMO_CODES[code] || ['⛅', 'Fair'];
+                        var wmo = WMO_CODES[code] || ['⛅', 'Tempo bom'];
 
                         document.getElementById('weatherIcon').textContent = isDay ? wmo[0] : '🌙';
                         document.getElementById('weatherText').textContent = temp + '°C • ' + wmo[1];
@@ -1471,7 +1441,7 @@
                             }
                             if (data.daily.sunset && data.daily.sunset[0]) {
                                 state.sunset = data.daily.sunset[0].split('T')[1];
-                                sunsetStr = ' • Sunset ' + state.sunset;
+                                sunsetStr = ' • Pôr do sol ' + state.sunset;
                                 var sunsetHour = parseInt(state.sunset.split(':')[0], 10);
                                 state.isSunset = Math.abs(localNow.getUTCHours() - sunsetHour) <= 1;
                             }
@@ -1499,8 +1469,8 @@
                     renderDrawerForecast();
                 })
                 .catch(function(err) {
-                    document.getElementById('weatherText').textContent = '22°C • Clear';
-                    document.getElementById('weatherSub').textContent = state.city || 'Offline Mode';
+                    document.getElementById('weatherText').textContent = '22°C • Céu limpo';
+                    document.getElementById('weatherSub').textContent = state.city || 'Sem conexão';
                 });
         }
 
@@ -1512,7 +1482,7 @@
 
             function showCurated() {
                 if (tab !== state.picksTab) return;
-                badge.textContent = 'Curated Picks';
+                badge.textContent = 'Sugestões';
                 renderPicks(tab === 'shows' ? FALLBACK_SHOWS : FALLBACK_MOVIES);
             }
 
@@ -1554,24 +1524,24 @@
                         var englishById = payload.englishById;
                         if (data.results && data.results.length >= 4 && tab === state.picksTab) {
                             var items = data.results.slice(0, 4).map(function(item) {
-                                var title = item.title || item.name || 'Trending';
+                                var title = item.title || item.name || 'Em alta';
                                 var english = englishById[item.id] || item.original_title || item.original_name || '';
                                 // Only worth a second line when the English name actually differs —
                                 // some charts return the same title in caps, which would just duplicate.
                                 var sameTitle = english.toLowerCase().trim() === title.toLowerCase().trim();
-                                var score = item.vote_average ? item.vote_average.toFixed(1) + '★' : 'Hot';
+                                var score = item.vote_average ? item.vote_average.toFixed(1) + '★' : 'Novo';
                                 return {
                                     title: title,
                                     titleOriginal: sameTitle ? '' : english,
-                                    badge: (tab === 'shows' ? 'Series' : 'Movie') + ' • ' + score,
-                                    service: 'TMDB Trending',
+                                    badge: (tab === 'shows' ? 'Série' : 'Filme') + ' • ' + score,
+                                    service: 'Em alta no TMDB',
                                     app: 'netflix',
-                                    desc: item.overview || 'Trending worldwide this week.',
+                                    desc: item.overview || 'Em alta no mundo esta semana.',
                                     poster: item.poster_path ? 'https://image.tmdb.org/t/p/w300' + item.poster_path : '',
                                     color: '#0a84ff'
                                 };
                             });
-                            badge.textContent = 'TMDB Live';
+                            badge.textContent = 'TMDB ao vivo';
                             renderPicks(items);
                             return true;
                         }
@@ -1604,15 +1574,15 @@
                                             return {
                                                 title: s.name,
                                                 badge: genre + ' • ' + s.rating.average + '★',
-                                                service: 'Watch on ' + network,
+                                                service: 'Assistir na ' + network,
                                                 app: 'netflix',
-                                                desc: cleanSummary || 'Critically acclaimed trending series.',
+                                                desc: cleanSummary || 'Série em alta, bem avaliada pela crítica.',
                                                 poster: s.image.medium,
                                                 color: '#0a84ff'
                                             };
                                         });
                                     if (topShows.length === 4) {
-                                        badge.textContent = 'Live Popular Feed';
+                                        badge.textContent = 'Populares ao vivo';
                                         renderPicks(topShows);
                                         return true;
                                     }
@@ -1630,51 +1600,144 @@
         }
 
         // --- Discover Installed Apps from LG webOS ---
-        function discoverTVApps() {
-            if (!window.webOS || !window.webOS.service) return;
-            try {
-                webOS.service.request("luna://com.webos.applicationManager", {
-                    method: "listLaunchPoints",
-                    parameters: {},
-                    onSuccess: function(res) {
-                        if (res && Array.isArray(res.launchPoints)) {
-                            res.launchPoints.forEach(function(lp) {
-                                var appId = lp.appId || lp.id;
-                                if (!appId) return;
-                                var exists = arrFind(state.catalog, function(c) { return c.id === appId; });
-                                var iconUrl = launchPointIcon(lp);
-                                if (exists && iconUrl) exists.iconUrl = iconUrl;
-                                if (lp.systemApp && !exists) return;
-                                if (!exists) {
-                                    state.catalog.push({
-                                        id: appId,
-                                        title: lp.title || lp.id,
-                                        tag: 'Installed App',
-                                        desc: lp.appDescription || ('Launch ' + (lp.title || lp.id) + ' natively on your LG TV.'),
-                                        color: lp.iconColor || '#0a84ff',
-                                        badge: (lp.title || 'APP').substring(0, 3).toUpperCase(),
-                                        iconUrl: iconUrl,
-                                        bg: 'linear-gradient(135deg, ' + (lp.iconColor || '#2a344a') + ', #101420)'
-                                    });
-                                }
-                            });
-                            renderAppsShelf();
-                        }
-                    }
+        // --- Apps instalados na TV ------------------------------------------------
+        // A prateleira mostra o que existe na TV, não uma lista fixa. Tentamos os
+        // caminhos que o barramento expõe, do mais completo ao menos:
+        //   1. listLaunchPoints / listApps  (inventário completo, quando a ACL libera)
+        //   2. dev/listApps                 (só apps de desenvolvedor, mas sempre liberado)
+        // Em TV em Developer Mode sem root nenhum deles devolve os apps de sistema:
+        // o barramento responde "Denied method call ... for category /". Nesse caso a
+        // prateleira usa a lista de reserva para não ficar vazia.
+        function lunaRequest(uri, method, params) {
+            return new Promise(function(resolve) {
+                if (!window.webOS || !window.webOS.service || typeof window.webOS.service.request !== 'function') {
+                    resolve(null);
+                    return;
+                }
+                var settled = false;
+                var timer = setTimeout(function() {
+                    if (!settled) { settled = true; resolve(null); }
+                }, 4000);
+                function done(value) {
+                    if (settled) return;
+                    settled = true;
+                    clearTimeout(timer);
+                    resolve(value);
+                }
+                try {
+                    webOS.service.request(uri, {
+                        method: method,
+                        parameters: params || {},
+                        onSuccess: done,
+                        onFailure: function() { done(null); }
+                    });
+                } catch (e) { done(null); }
+            });
+        }
+
+        function normalizeEntries(list, idKeys) {
+            var entries = [];
+            (list || []).forEach(function(entry) {
+                var id = null;
+                for (var i = 0; i < idKeys.length && !id; i++) {
+                    id = entry[idKeys[i]];
+                }
+                if (!id || typeof id !== 'string') return;
+                entries.push({
+                    id: id,
+                    title: entry.title || entry.appTitle || id,
+                    icon: launchPointIcon(entry),
+                    iconColor: entry.iconColor || ''
                 });
-            } catch (e) {}
+            });
+            return entries;
+        }
+
+        var APP_SOURCES = [
+            { uri: 'luna://com.webos.applicationManager', method: 'listLaunchPoints', key: 'launchPoints', ids: ['appId', 'id'] },
+            { uri: 'luna://com.webos.applicationManager', method: 'listApps', key: 'apps', ids: ['id', 'appId'] },
+            { uri: 'luna://com.webos.applicationManager', method: 'dev/listApps', key: 'apps', ids: ['id', 'appId'] }
+        ];
+
+        function loadInstalledApps(index) {
+            index = index || 0;
+            if (index >= APP_SOURCES.length) return Promise.resolve([]);
+            var source = APP_SOURCES[index];
+            return lunaRequest(source.uri, source.method, {}).then(function(res) {
+                var entries = normalizeEntries(res && res[source.key], source.ids);
+                if (entries.length) return entries;
+                return loadInstalledApps(index + 1);
+            });
+        }
+
+        function buildCatalog(entries) {
+            var catalog = [];
+            var seen = {};
+            (entries || []).forEach(function(entry) {
+                if (seen[entry.id]) return;
+                seen[entry.id] = true;
+                var known = KNOWN_APPS[entry.id] || {};
+                catalog.push({
+                    id: entry.id,
+                    title: known.title || entry.title || entry.id,
+                    tag: known.tag || 'App instalado',
+                    desc: known.desc || ('Abrir ' + (entry.title || entry.id) + ' direto na TV.'),
+                    color: known.color || entry.iconColor || '#0a84ff',
+                    logo: known.logo || '',
+                    iconUrl: entry.icon || '',
+                    bg: known.bg || 'linear-gradient(135deg, #2a344a, #101420)'
+                });
+            });
+            return catalog;
+        }
+
+        // Reserva: apps que sabemos existir em TVs LG, com os metadados acima.
+        function fallbackCatalog() {
+            var extra = ['com.webos.app.hdmi2', 'com.webos.app.hdmi3', 'com.webos.app.hdmi4',
+                         'com.webos.app.mediadiscovery', 'cdp-30', 'globoplaywebos', 'spotify-beehive'];
+            return buildCatalog(FALLBACK_ORDER.concat(extra).map(function(id) {
+                return { id: id, title: KNOWN_APPS[id].title, icon: '', iconColor: KNOWN_APPS[id].color };
+            }));
+        }
+
+        function focusFirstTile() {
+            var first = document.querySelector('.app-tile');
+            if (first) setMainFocus(first);
+        }
+
+        function bootstrapShelf() {
+            // Desenha na hora com a reserva para a TV nunca mostrar prateleira vazia,
+            // depois substitui pelo inventário real assim que ele chega.
+            state.catalog = fallbackCatalog();
+            if (!state.favorites || !state.favorites.length) {
+                state.favorites = sortIdsByUsage(FALLBACK_ORDER.slice());
+            }
+            renderAppsShelf();
+
+            loadInstalledApps().then(function(entries) {
+                // < 4 apps = a TV só devolveu os apps de desenvolvedor; a reserva vale mais.
+                if (entries.length < 4) return;
+                state.catalog = buildCatalog(entries);
+                var installedIds = state.catalog.map(function(app) { return app.id; });
+                var favourites = (state.favorites || []).filter(function(id) {
+                    return installedIds.indexOf(id) !== -1;
+                });
+                if (!favourites.length) favourites = sortIdsByUsage(installedIds).slice(0, 8);
+                state.favorites = sortIdsByUsage(favourites).slice(0, 8);
+                renderAppsShelf();
+                refreshMainNavList();
+                focusFirstTile();
+            });
         }
 
         // --- Native webOS App Launch ---
-        var shelfEdit = null;
-        var movingTileId = null;
         var pendingLaunch = null;
         function launchApp(appId) {
-            if (shelfEdit || pendingLaunch) return; // Ignore repeated remote presses while a request is pending.
+            if (pendingLaunch) return; // Ignore repeated remote presses while a request is pending.
             var app = arrFind(state.catalog, function(item) { return item.id === appId; });
             var title = app ? (devicePreset(app, state.hdmiDevices).title || app.title) : appId;
             if (!window.webOS || !window.webOS.service || typeof window.webOS.service.request !== 'function') {
-                showToast('Open ' + title + ' on your LG TV. Launching is unavailable in this preview.', 5000);
+                showToast('Abra ' + title + ' na sua TV LG. A prévia no navegador não abre apps.', 5000);
                 return;
             }
             var request = { timer: null };
@@ -1691,9 +1754,9 @@
             function failure(error) {
                 var detail = error && error.errorText || '';
                 if (/not installed|not found|does not exist|unknown app/i.test(detail)) {
-                    finish(title + ' is not installed or is unavailable on this TV.');
+                    finish(title + ' não está instalado nesta TV.');
                 } else {
-                    finish('Could not open ' + title + '. Check that it is installed, then try again.');
+                    finish('Não foi possível abrir ' + title + '. Confira se está instalado e tente de novo.');
                 }
             }
             function fallback(originalError) {
@@ -1709,17 +1772,17 @@
                             if (pendingLaunch !== request) return;
                             var reply = null;
                             try { reply = JSON.parse(result && result.stdout || ''); } catch (e) {}
-                            if (reply && reply.returnValue === true) finish('Opening ' + title + '…');
+                            if (reply && reply.returnValue === true) finish('Abrindo ' + title + '…');
                             else if (reply && reply.returnValue === false) failure(reply);
-                            else finish('Could not confirm ' + title + ' opened. Please try again.');
+                            else finish('Não deu para confirmar que ' + title + ' abriu. Tente de novo.');
                         },
                         onFailure: function() { failure(originalError); }
                     });
                 } catch (e) { failure(originalError); }
             }
-            showToast('Opening ' + title + '…', 8000);
+            showToast('Abrindo ' + title + '…', 8000);
             request.timer = setTimeout(function() {
-                finish('No response opening ' + title + '. Please try again.');
+                finish('Sem resposta ao abrir ' + title + '. Tente de novo.');
             }, 8000);
             try {
                 webOS.service.request('luna://com.webos.applicationManager', {
@@ -1728,7 +1791,7 @@
                     onSuccess: function(result) {
                         if (pendingLaunch !== request) return;
                         if (result && result.returnValue === false) fallback(result);
-                        else finish('Opening ' + title + '…');
+                        else finish('Abrindo ' + title + '…');
                     },
                     onFailure: fallback
                 });
@@ -1740,9 +1803,8 @@
             var grid = document.getElementById('appsGrid');
             grid.innerHTML = '';
 
-            // While reordering, the tiles must stay in the exact order being edited,
-            // so usage sorting only applies to the live (non-edit) shelf.
-            var orderedIds = shelfEdit ? shelfEdit.slice() : orderFavoritesByUsage(state.favorites);
+            // Ordem sempre automática: uso da última semana, caindo para o total.
+            var orderedIds = sortIdsByUsage(state.favorites || []);
             var favItems = orderedIds
                 .map(function(id) { return arrFind(state.catalog, function(c) { return c.id === id; }); })
                 .filter(Boolean)
@@ -1752,30 +1814,32 @@
                 var device = devicePreset(app, state.hdmiDevices);
                 var title = device.title || app.title;
                 var btn = document.createElement('button');
-                btn.className = 'app-tile nav-item' + (movingTileId === app.id ? ' moving' : '');
-                if (shelfEdit) btn.setAttribute('aria-pressed', String(movingTileId === app.id));
+                btn.className = 'app-tile nav-item';
                 btn.dataset.id = app.id;
                 btn.dataset.tag = app.tag;
                 btn.dataset.title = title;
-                btn.dataset.desc = device.title ? 'Play ' + device.title + ' on ' + app.title + '.' : app.desc;
+                btn.dataset.desc = device.title ? 'Abrir ' + device.title + ' na ' + app.title + '.' : app.desc;
                 btn.setAttribute('aria-label', title + (device.title ? ' — ' + app.title : ''));
                 btn.dataset.color = app.color;
-                // Staggered entrance plus a focus glow tinted with the app's own
-                // colour — both animating only transform/opacity so the GPU keeps
-                // the 60 FPS promise while the D-Pad flies across the shelf.
+                // Entrance stagger + a focus glow tinted with the app's own colour;
+                // both animate transform/opacity only, so the GPU keeps 60 FPS.
                 btn.style.animationDelay = (index * 45) + 'ms';
                 btn.style.setProperty('--tile-glow', hexToRgba(app.color, 0.5));
 
                 var iconDiv = document.createElement('div');
                 iconDiv.className = 'app-icon';
-                iconDiv.style.background = app.bg || 'linear-gradient(135deg, #0a84ff, #0040a0)';
+                // Superfície neutra com um sopro da cor da marca: o logo traz a cor
+                // de verdade. Fundo saturado por trás do logo apagava wordmarks como
+                // o da Globoplay (vermelho sobre vermelho).
+                iconDiv.style.background = app.logo
+                    ? 'linear-gradient(160deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.03))'
+                    : 'linear-gradient(160deg, ' + hexToRgba(app.color, 0.22) + ', rgba(255, 255, 255, 0.03))';
                 if (isHDMI(app)) {
-                    iconDiv.style.background = device.color;
                     if (device.logo) {
-                        var fallback = document.createElement('span');
-                        fallback.className = 'app-art-fallback';
-                        fallback.textContent = device.title;
-                        iconDiv.appendChild(fallback);
+                        var deviceFallback = document.createElement('span');
+                        deviceFallback.className = 'app-art-fallback';
+                        deviceFallback.textContent = device.title;
+                        iconDiv.appendChild(deviceFallback);
                         addTileImage(iconDiv, 'assets/brands/' + device.logo + '.svg', true);
                     } else {
                         iconDiv.innerHTML = deviceArtwork(device.shape);
@@ -1784,10 +1848,13 @@
                     var fallback = document.createElement('span');
                     fallback.className = 'app-art-fallback';
                     fallback.textContent = app.title;
+                    // Nomes longos cabem sem quebrar no meio da palavra.
+                    if (app.title.length > 11) fallback.style.fontSize = '21px';
+                    else if (app.title.length > 8) fallback.style.fontSize = '25px';
                     iconDiv.appendChild(fallback);
-                    var logo = APP_LOGOS[app.id];
-                    if (logo || app.iconUrl) {
-                        addTileImage(iconDiv, logo ? 'assets/brands/' + logo + '.svg' : app.iconUrl, !!logo);
+                    // Brand artwork when we know the app, otherwise the icon the TV ships.
+                    if (app.logo || app.iconUrl) {
+                        addTileImage(iconDiv, app.logo ? 'assets/brands/' + app.logo + '.svg' : app.iconUrl, !!app.logo);
                     }
                 }
 
@@ -1795,28 +1862,16 @@
 
                 btn.addEventListener('mouseenter', function() { setMainFocus(btn); });
                 btn.addEventListener('click', function() {
-                    if (shelfEdit) { movingTileId = movingTileId === app.id ? null : app.id; renderAppsShelf(); focusShelfTile(app.id); }
-                    else {
-                        // Recorded on intent, not on the Luna reply: the launch is
-                        // what the user asked for even if the app then fails to open.
-                        recordAppUsage(app.id);
-                        launchApp(app.id);
-                    }
+                    // Recorded on intent, not on the Luna reply: the launch is what
+                    // the user asked for even if the app then fails to open.
+                    recordAppUsage(app.id);
+                    launchApp(app.id);
                 });
                 grid.appendChild(btn);
             });
 
-            var hint = document.getElementById('shelfCountHint');
-            if (shelfEdit) {
-                hint.textContent = movingTileId ? '← / → Move • OK Place • Back Cancel' : 'Select a tile • OK Pick up • Done to save';
-            } else {
-                hint.textContent = favItems.length + ' Apps • ' + (state.autoSort ? 'Ordered by use' : 'Manual order') + ' • Instant Launch';
-            }
-            var sortBtn = document.getElementById('autoSortBtn');
-            if (sortBtn) {
-                sortBtn.textContent = state.autoSort ? 'Auto: by use' : 'Manual order';
-                sortBtn.className = 'sort-pill nav-item' + (state.autoSort ? ' on' : '');
-            }
+            document.getElementById('shelfCountHint').textContent =
+                favItems.length + (favItems.length === 1 ? ' app' : ' apps') + ' · ordenado pelo uso';
             refreshMainNavList();
         }
 
@@ -1858,62 +1913,6 @@
             refreshMainNavList();
         }
 
-        function focusShelfTile(id) {
-            var tile = arrFind(toArray(document.querySelectorAll('.app-tile')), function(el) { return el.dataset.id === id; });
-            if (tile) setMainFocus(tile);
-        }
-        function moveShelfTile(direction) {
-            if (!shelfEdit || !movingTileId) { showToast('Select a tile first'); return; }
-            var index = shelfEdit.indexOf(movingTileId);
-            var destination = index + direction;
-            if (index < 0 || destination < 0 || destination >= shelfEdit.length) return;
-            shelfEdit.splice(index, 1);
-            shelfEdit.splice(destination, 0, movingTileId);
-            renderAppsShelf();
-            focusShelfTile(movingTileId);
-        }
-        function finishShelfEdit(save) {
-            if (!shelfEdit) return;
-            if (save) {
-                try { localStorage.setItem('fmtv_favorites', JSON.stringify(shelfEdit)); }
-                catch (e) { showToast('Could not save the order. Please try again.', 5000); return; }
-                state.favorites = shelfEdit.slice();
-            }
-            shelfEdit = null;
-            movingTileId = null;
-            document.getElementById('reorderShelfBtn').hidden = false;
-            document.getElementById('shelfEditActions').hidden = true;
-            renderAppsShelf();
-            setMainFocus(document.getElementById('reorderShelfBtn'));
-            showToast(save ? 'Tile order saved' : 'Reordering cancelled');
-        }
-        document.getElementById('reorderShelfBtn').addEventListener('click', function() {
-            shelfEdit = state.favorites.slice();
-            movingTileId = null;
-            this.hidden = true;
-            document.getElementById('shelfEditActions').hidden = false;
-            renderAppsShelf();
-            focusShelfTile(shelfEdit[0]);
-        });
-        document.getElementById('saveShelfOrder').addEventListener('click', function() { finishShelfEdit(true); });
-        document.getElementById('cancelShelfOrder').addEventListener('click', function() { finishShelfEdit(false); });
-        document.querySelectorAll('#shelfEditActions button, #reorderShelfBtn').forEach(function(button) {
-            button.addEventListener('mouseenter', function() { setMainFocus(button); });
-        });
-
-        // Auto-sort can be switched off so the manual Reorder result sticks.
-        var autoSortBtn = document.getElementById('autoSortBtn');
-        if (autoSortBtn) {
-            autoSortBtn.addEventListener('click', function() {
-                state.autoSort = !state.autoSort;
-                try { localStorage.setItem('fmtv_autosort', state.autoSort ? 'on' : 'off'); } catch (e) {}
-                renderAppsShelf();
-                setMainFocus(autoSortBtn);
-                showToast(state.autoSort ? 'Shelf ordered by weekly use' : 'Manual shelf order kept');
-            });
-            autoSortBtn.addEventListener('mouseenter', function() { setMainFocus(autoSortBtn); });
-        }
-
         // --- Focus & Spatial Navigation ---
         var mainNavItems = [];
         var curIndex = 0;
@@ -1927,7 +1926,7 @@
         var ambientGlow = document.getElementById('ambientGlow');
 
         function refreshMainNavList() {
-            mainNavItems = toArray(document.querySelectorAll(shelfEdit ? '.shelf-wrapper .nav-item' : '.nav-item')).filter(function(el) { return el.offsetParent !== null; });
+            mainNavItems = toArray(document.querySelectorAll('.nav-item')).filter(function(el) { return el.offsetParent !== null; });
             if (mainNavItems.length > 0) {
                 curIndex = Math.min(curIndex, mainNavItems.length - 1);
                 // Default focus on first app tile if starting
@@ -1940,7 +1939,7 @@
         }
 
         function setMainFocus(item) {
-            if (!item || (shelfEdit && !item.closest('.shelf-wrapper'))) return;
+            if (!item) return;
             document.querySelectorAll('.nav-item.focused').forEach(function(i) { i.classList.remove('focused'); });
             item.classList.add('focused');
             item.focus({ preventScroll: true });
@@ -1999,9 +1998,8 @@
         var tempDevices = {};
 
         function openSettingsModal() {
-            if (shelfEdit) return;
             modalOpen = true;
-            tempFavorites = state.favorites.slice();
+            tempFavorites = (state.favorites || []).slice();
             tempDevices = shallowClone(state.hdmiDevices);
             renderHDMIOptions();
             document.getElementById('cfgCity').value = state.city;
@@ -2058,7 +2056,7 @@
                     } else if (tempFavorites.length < 8) {
                         tempFavorites.push(app.id);
                     } else {
-                        showToast('Max 8 apps on shelf');
+                        showToast('Máximo de 8 apps na prateleira');
                     }
                     renderAppSelectorGrid();
                     refreshModalNavList();
@@ -2081,9 +2079,10 @@
             modalIndex = modalNavItems.indexOf(el);
         }
 
-        document.getElementById('customizeBtn').addEventListener('click', openSettingsModal);
-        document.getElementById('customizeBtn').addEventListener('mouseenter', function() {
-            setMainFocus(document.getElementById('customizeBtn'));
+        // Os ajustes saíram do header: agora abrem pelo botão dentro do painel de clima.
+        document.getElementById('drawerSettingsBtn').addEventListener('click', function() {
+            closeDrawer();
+            openSettingsModal();
         });
         document.getElementById('weatherWidget').addEventListener('click', function() {
             openDrawer();
@@ -2113,19 +2112,34 @@
         // --- Weather & Sun Drawer ---
         var weatherDrawer = document.getElementById('weatherDrawer');
         var closeDrawerBtn = document.getElementById('closeDrawerBtn');
+        var drawerSettingsBtn = document.getElementById('drawerSettingsBtn');
+        var drawerNavItems = [closeDrawerBtn, drawerSettingsBtn];
+        var drawerNavIndex = 0;
         var drawerOpen = false;
+
+        function setDrawerFocus(index) {
+            drawerNavIndex = index;
+            drawerNavItems.forEach(function(btn, i) {
+                btn.classList.toggle('focused', i === index);
+            });
+            drawerNavItems[index].focus();
+        }
 
         function renderDrawerForecast() {
             document.getElementById('drawerIcon').textContent = document.getElementById('weatherIcon').textContent;
-            document.getElementById('drawerTemp').textContent = document.getElementById('weatherText').textContent;
-            document.getElementById('drawerCityLabel').textContent = document.getElementById('weatherSub').textContent;
+            var weatherText = document.getElementById('weatherText').textContent || '';
+            var weatherParts = weatherText.split('•');
+            document.getElementById('drawerTemp').textContent = (weatherParts[0] || weatherText).trim();
+            document.getElementById('drawerCityLabel').textContent =
+                (weatherParts[1] ? weatherParts[1].trim() + ' · ' : '') +
+                document.getElementById('weatherSub').textContent;
             document.getElementById('drawerSunrise').textContent = state.sunrise || '--:--';
             document.getElementById('drawerSunset').textContent = state.sunset || '--:--';
 
             var hourlyEl = document.getElementById('drawerHourly');
             hourlyEl.innerHTML = '';
             state.hourlyForecast.forEach(function(h) {
-                var wmo = WMO_CODES[h.code] || ['⛅', 'Fair'];
+                var wmo = WMO_CODES[h.code] || ['⛅', 'Tempo bom'];
                 var chip = document.createElement('div');
                 chip.className = 'drawer-hour-chip';
                 chip.innerHTML =
@@ -2137,17 +2151,15 @@
         }
 
         function openDrawer() {
-            if (shelfEdit) return;
             drawerOpen = true;
             weatherDrawer.classList.add('active');
-            closeDrawerBtn.classList.add('focused');
-            closeDrawerBtn.focus();
+            setDrawerFocus(0);
         }
 
         function closeDrawer() {
             drawerOpen = false;
             weatherDrawer.classList.remove('active');
-            closeDrawerBtn.classList.remove('focused');
+            drawerNavItems.forEach(function(btn) { btn.classList.remove('focused'); });
             setMainFocus(mainNavItems[curIndex]);
         }
 
@@ -2198,7 +2210,7 @@
 
         document.getElementById('closeModalBtn').addEventListener('click', closeSettingsModal);
         document.getElementById('resetDefaultBtn').addEventListener('click', function() {
-            tempFavorites = DEFAULT_FAVORITES.slice();
+            tempFavorites = sortIdsByUsage(state.catalog.map(function(app) { return app.id; })).slice(0, 8);
             tempDevices = {};
             renderHDMIOptions();
             document.getElementById('cfgCity').value = '';
@@ -2206,7 +2218,7 @@
             document.getElementById('cfgTmdbKey').value = '';
             renderAppSelectorGrid();
             refreshModalNavList();
-            showToast('Defaults restored');
+            showToast('Padrões restaurados');
         });
 
         document.getElementById('saveModalBtn').addEventListener('click', function() {
@@ -2227,7 +2239,7 @@
             fetchWeather();
             fetchTrendingPicks();
             closeSettingsModal();
-            showToast('Saved & Applied!');
+            showToast('Salvo e aplicado!');
         });
 
         // --- Remote Control Key Handler ---
@@ -2239,24 +2251,7 @@
                 return;
             }
 
-            if (shelfEdit) {
-                if (e.keyCode === 461 || e.key === 'Escape' || e.key === 'GoBack') {
-                    finishShelfEdit(false); e.preventDefault(); return;
-                }
-                if (movingTileId) {
-                    if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
-                        moveShelfTile(e.key === 'ArrowLeft' ? -1 : 1);
-                    } else if (e.key === 'Enter' || e.key === 'ArrowUp' || e.key === 'ArrowDown') {
-                        var id = movingTileId;
-                        movingTileId = null;
-                        renderAppsShelf();
-                        if (e.key === 'Enter') focusShelfTile(id);
-                        else setMainFocus(document.getElementById('saveShelfOrder'));
-                    } else return;
-                    e.preventDefault(); return;
-                }
-            }
-
+            // Voltar no controle (461) ou ESC
             // Back button on LG Magic Remote (461) or Escape
             if (e.keyCode === 461 || e.key === 'Escape' || e.key === 'GoBack') {
                 if (modalOpen) {
@@ -2270,8 +2265,14 @@
             }
 
             if (drawerOpen) {
-                if (e.key === 'Enter') {
-                    closeDrawer();
+                if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+                    setDrawerFocus((drawerNavIndex + 1) % drawerNavItems.length);
+                    e.preventDefault();
+                } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                    setDrawerFocus((drawerNavIndex - 1 + drawerNavItems.length) % drawerNavItems.length);
+                    e.preventDefault();
+                } else if (e.key === 'Enter') {
+                    drawerNavItems[drawerNavIndex].click();
                     e.preventDefault();
                 }
                 return;
@@ -2325,7 +2326,8 @@
         applyTheme();
         fetchWeather();
         fetchTrendingPicks();
-        discoverTVApps();
+        bootstrapShelf();
+        focusFirstTile();
         // Refresh weather & picks every 30 mins
         setInterval(fetchWeather, 30 * 60 * 1000);
         setInterval(fetchTrendingPicks, 60 * 60 * 1000);

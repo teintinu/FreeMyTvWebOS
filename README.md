@@ -41,7 +41,7 @@ Modern LG webOS (especially webOS 6, 22, 23, and 24) replaced the classic, snapp
 
 - **🚫 Zero Ads. Ever.** No sponsored rows, no banner promos, no shopping widgets.
 - **🧊 Frosted Glass App Shelf.** Your favorite streaming apps and HDMI inputs front-and-center, launching natively in ~100ms via the webOS Luna bus.
-- **⚙️ On-Screen Shelf Customizer.** Automatically detects installed apps on your LG TV so you can toggle which ones appear on your shelf using your remote.
+- **⚙️ Self-Ordering Shelf.** Tiles sort themselves by how often you open each app in the last 7 days — no manual reordering to maintain.
 - **🌅 Dynamic Sunset & OLED Themes.** Connects to Open-Meteo to show live local weather and automatically shifts your background from *Daylight Blue* to *Sunset Amber* to *Deep Midnight* (plus a *Pure OLED Black* mode).
 - **🎬 Movies & Shows Trending Tabs.** Separate tabs for trending movies and TV shows—TMDB-ranked with your optional key, or our built-in zero-key live feed (TVMaze for Shows, curated picks for Movies).
 - **🌤️ Weather & Sun Drawer.** Click the weather widget for an hourly forecast and exact sunrise/sunset times, powered by Open-Meteo.
@@ -96,9 +96,9 @@ python scripts/install.py
 
 ## ⚙️ Make It Yours (On-TV Customization)
 
-Click the **⚙️ Customize** button in the top-right corner of the dashboard using your remote:
+Open the **Clima e sol** panel (the weather pill in the header), press **→** and choose **⚙ Ajustes**:
 
-Choose **Reorder** on the main shelf. Select a tile and press OK to pick it up, use Left/Right to move it, then OK to place it. Choose **Done** to save. Back or Cancel discards changes.
+The shelf orders itself. There is no manual reorder anymore: tiles follow how often you open each app in the last 7 days, falling back to all-time use when an app was not opened that week. The usage log lives in `localStorage` (`fmtv_usage`), pruned to 30 days.
 
 Launch messages use the app or console name and report unavailable apps, failures, or no response after eight seconds. Repeated presses are ignored while a launch is pending; browser previews explain that launching requires an LG TV.
 
@@ -108,7 +108,7 @@ The shelf displays larger artwork with bundled brand logos for PS5, PS4, Xbox, N
 
 | Setting | What It Does |
 |---|---|
-| **App Shelf Selector** | Auto-discovers apps installed on your TV (`listLaunchPoints`) so you can pick up to 8 favorites for your glass dock. |
+| **Shelf apps** | Lists the apps found on your TV so you can pick up to 8 for the glass dock. On a non-rooted Developer Mode TV the public bus answers `Denied method call ... for category "/"` for `listLaunchPoints`; in that case the app falls back to a built-in catalog. Installing the Homebrew Channel unlocks the real inventory. |
 | **City Name** | Type any city (e.g., `São Paulo`, `Lisbon`, `New York`) for live Open-Meteo weather and accurate local sunset times, or leave blank for automatic IP geolocation. |
 | **Theme Mode** | Choose `Auto (Follows Sunset)`, `Deep Midnight`, `Pure OLED Black`, or `Daylight Blue`. |
 | **TMDB API Key** | Paste a free [TMDB API Key](https://www.themoviedb.org/settings/api) for live weekly trending movies & shows, or leave empty to use the built-in zero-key live popular feed. |
@@ -214,7 +214,7 @@ O webOS moderno da LG (especialmente webOS 6, 22, 23 e 24) substituiu a clássic
 
 - **🚫 Zero Anúncios. Nunca.** Sem linhas patrocinadas, sem banners promocionais, sem widgets de compras.
 - **🧊 Prateleira de Apps em Vidro Fosco.** Seus apps de streaming e entradas HDMI favoritos em destaque, abrindo nativamente em ~100ms via o barramento Luna do webOS.
-- **⚙️ Personalizador de Prateleira na Tela.** Detecta automaticamente os apps instalados na sua TV LG para você escolher quais aparecem na prateleira usando o controle remoto.
+- **⚙️ Prateleira que se Ordena Sozinha.** Os tiles se organizam pela frequência com que você abre cada app nos últimos 7 dias — sem reordenação manual para manter.
 - **🌅 Temas Dinâmicos de Pôr do Sol e OLED.** Conecta ao Open-Meteo para mostrar o clima local ao vivo e muda automaticamente o fundo de *Azul Diurno* para *Âmbar do Pôr do Sol* até *Meia-Noite Profunda* (além de um modo *Preto OLED Puro*).
 - **🎬 Abas de Filmes e Séries em Alta.** Abas separadas para filmes e séries em alta — ranqueadas pelo TMDB com sua chave opcional, ou nosso feed ao vivo sem chave (TVMaze para séries, curadoria para filmes).
 - **🌤️ Gaveta de Clima e Sol.** Clique no widget de clima para ver a previsão hora a hora e os horários exatos de nascer/pôr do sol, via Open-Meteo.
@@ -269,11 +269,11 @@ python scripts/install.py
 
 ## ⚙️ Deixe do Seu Jeito (Personalização na TV)
 
-Clique no botão **⚙️ Customize** no canto superior direito do painel usando o controle remoto:
+Abra o painel **Clima e sol** (o widget de clima no header), aperte **→** e escolha **⚙ Ajustes**:
 
 | Configuração | O Que Faz |
 |---|---|
-| **Seletor de Prateleira de Apps** | Descobre automaticamente os apps instalados na sua TV (`listLaunchPoints`) para você escolher até 8 favoritos para sua prateleira de vidro. |
+| **Apps da prateleira** | Lista os apps encontrados na sua TV para você escolher até 8 para a prateleira. Em TV em Developer Mode sem root o barramento público responde `Denied method call ... for category "/"` para `listLaunchPoints`; nesse caso o app usa o catálogo de reserva. Com o Homebrew Channel instalado a lista real é liberada. |
 | **Nome da Cidade** | Digite qualquer cidade (ex.: `São Paulo`, `Lisboa`, `Nova York`) para clima ao vivo via Open-Meteo e horários precisos de pôr do sol, ou deixe em branco para geolocalização automática por IP. |
 | **Modo de Tema** | Escolha entre `Automático (Segue o Pôr do Sol)`, `Meia-Noite Profunda`, `Preto OLED Puro`, ou `Azul Diurno`. |
 | **Chave da API do TMDB** | Cole uma [chave gratuita da API do TMDB](https://www.themoviedb.org/settings/api) para ver filmes e séries em alta da semana ao vivo, ou deixe em branco para usar o feed ao vivo popular embutido (sem necessidade de chave). |
